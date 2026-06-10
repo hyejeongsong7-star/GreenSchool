@@ -10,7 +10,7 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght=300;400;500;700;900&display=swap');
     body {
       font-family: 'Noto Sans KR', sans-serif;
     }
@@ -398,33 +398,101 @@
           </div>
         </div>
 
-        <!-- 3단계: 기부 품목 선택 -->
+        <!-- 3단계: 기부 품목 및 사이즈 선택 (요청사항 반영) -->
         <div class="space-y-4">
-          <h3 class="text-lg font-bold text-slate-800 border-b pb-2 flex items-center">
-            <span class="bg-pink-100 text-pink-800 w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold mr-2">3</span>
-            기부할 품목 선택 (다중 선택 가능)
-          </h3>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <label class="flex items-center justify-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-pink-50 hover:border-pink-300 transition select-none flex-col">
-              <input type="checkbox" name="donate-items" value="자켓" class="w-5 h-5 text-pink-600 mb-2">
-              <span class="font-semibold text-slate-800 text-sm">자켓 / 마이</span>
-            </label>
-            <label class="flex items-center justify-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-pink-50 hover:border-pink-300 transition select-none flex-col">
-              <input type="checkbox" name="donate-items" value="셔츠/블라우스" class="w-5 h-5 text-pink-600 mb-2">
-              <span class="font-semibold text-slate-800 text-sm">셔츠 / 블라우스</span>
-            </label>
-            <label class="flex items-center justify-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-pink-50 hover:border-pink-300 transition select-none flex-col">
-              <input type="checkbox" name="donate-items" value="바지/스커트" class="w-5 h-5 text-pink-600 mb-2">
-              <span class="font-semibold text-slate-800 text-sm">바지 / 치마</span>
-            </label>
-            <label class="flex items-center justify-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-pink-50 hover:border-pink-300 transition select-none flex-col">
-              <input type="checkbox" name="donate-items" value="조끼/체육복" class="w-5 h-5 text-pink-600 mb-2">
-              <span class="font-semibold text-slate-800 text-sm">조끼 / 체육복 등</span>
-            </label>
+          <div class="flex justify-between items-center border-b pb-2">
+            <h3 class="text-lg font-bold text-slate-800 flex items-center">
+              <span class="bg-pink-100 text-pink-800 w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold mr-2">3</span>
+              기부 품목 및 사이즈 선택
+            </h3>
+            <span class="text-xs text-pink-600 bg-pink-50 px-2 py-1 rounded-md font-semibold">복수 기부 환영합니다</span>
           </div>
-          <div>
-            <label for="donor-memo" class="block text-sm font-semibold text-slate-700 mb-1">추가 기부 내용 또는 한마디 (선택)</label>
-            <textarea id="donor-memo" rows="3" placeholder="예: 3년간 깨끗하게 입었던 교복입니다. 후배님께 도움이 되길 바랍니다!" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition text-sm"></textarea>
+
+          <!-- 기부 품목 리스트 -->
+          <div class="space-y-3">
+            <!-- 자켓 기부 -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition gap-3">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="donate-item-jacket" onchange="toggleDonateItemOptions('jacket')" name="donate-items" value="자켓" class="w-5 h-5 text-pink-600 border-slate-300 rounded focus:ring-pink-500">
+                <label for="donate-item-jacket" class="font-bold text-slate-800 text-sm md:text-base cursor-pointer">학교 공식 자켓 (마이)</label>
+              </div>
+              <div id="donate-options-jacket" class="hidden flex items-center space-x-2">
+                <select id="donate-gender-jacket" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="공용">구분없음</option>
+                  <option value="남성용">남학생용</option>
+                  <option value="여성용">여학생용</option>
+                </select>
+                <select id="donate-size-jacket" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="85">85 (S)</option>
+                  <option value="90">90 (M)</option>
+                  <option value="95" selected>95 (L)</option>
+                  <option value="100">100 (XL)</option>
+                  <option value="105">105 (XXL)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 셔츠 기부 -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition gap-3">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="donate-item-shirt" onchange="toggleDonateItemOptions('shirt')" name="donate-items" value="셔츠/블라우스" class="w-5 h-5 text-pink-600 border-slate-300 rounded focus:ring-pink-500">
+                <label for="donate-item-shirt" class="font-bold text-slate-800 text-sm md:text-base cursor-pointer">기본 와이셔츠 / 블라우스</label>
+              </div>
+              <div id="donate-options-shirt" class="hidden flex items-center space-x-2">
+                <select id="donate-gender-shirt" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="남성용">남학생 셔츠</option>
+                  <option value="여성용">여학생 블라우스</option>
+                </select>
+                <select id="donate-size-shirt" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="85">85</option>
+                  <option value="90">90</option>
+                  <option value="95" selected>95</option>
+                  <option value="100">100</option>
+                  <option value="105">105</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 바지/치마 기부 -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition gap-3">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="donate-item-pants" onchange="toggleDonateItemOptions('pants')" name="donate-items" value="바지/스커트" class="w-5 h-5 text-pink-600 border-slate-300 rounded focus:ring-pink-500">
+                <label for="donate-item-pants" class="font-bold text-slate-800 text-sm md:text-base cursor-pointer">동복 바지 / 스커트</label>
+              </div>
+              <div id="donate-options-pants" class="hidden flex items-center space-x-2">
+                <select id="donate-gender-pants" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="바지">공용 바지</option>
+                  <option value="치마">여성 스커트</option>
+                </select>
+                <select id="donate-size-pants" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="65">허리 65(26)</option>
+                  <option value="71" selected>허리 71(28)</option>
+                  <option value="77">허리 77(30)</option>
+                  <option value="83">허리 83(32)</option>
+                  <option value="89">허리 89(35)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 조끼 기부 -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition gap-3">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="donate-item-vest" onchange="toggleDonateItemOptions('vest')" name="donate-items" value="조끼" class="w-5 h-5 text-pink-600 border-slate-300 rounded focus:ring-pink-500">
+                <label for="donate-item-vest" class="font-bold text-slate-800 text-sm md:text-base cursor-pointer">니트 조끼 / 체육복</label>
+              </div>
+              <div id="donate-options-vest" class="hidden flex items-center space-x-2">
+                <select id="donate-gender-vest" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="공용">공용 조끼</option>
+                </select>
+                <select id="donate-size-vest" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="85">85</option>
+                  <option value="90">90</option>
+                  <option value="95" selected>95</option>
+                  <option value="100">100</option>
+                  <option value="105">105</option>
+                </select>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -447,15 +515,14 @@
 
   </main>
 
-  <!-- 푸터 -->
+  <!-- 푸터 (운영자 소개 줄 삭제 완료) -->
   <footer class="bg-slate-800 text-slate-400 py-8 border-t border-slate-700 text-sm mt-12">
     <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
       <div class="text-center md:text-left">
         <p class="font-bold text-slate-300">Green 스마트 교복 은행 시스템</p>
-        <p class="text-xs mt-1">본 서비스는 학교 학생회 및 학부모 사회적 협동조합에 의해 공동 운영됩니다.</p>
       </div>
       <div class="flex space-x-6 text-xs">
-
+        
       </div>
     </div>
   </footer>
@@ -511,7 +578,7 @@
           
           <!-- 선택한 품목 리스트 -->
           <div class="border-t border-slate-100 pt-3 mt-3">
-            <span class="text-xs text-slate-400 block mb-2">신청 품목 상세</span>
+            <span id="receipt-items-label" class="text-xs text-slate-400 block mb-2">신청 품목 상세</span>
             <div id="receipt-items" class="space-y-1.5 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl max-h-32 overflow-y-auto">
               <!-- JS로 동적 렌더링 -->
             </div>
@@ -684,10 +751,24 @@
       `;
     }
 
-    // 품목 체크 시 옵션 토글
+    // 소장/대여용 옵션 표시 토글
     function toggleItemOptions(itemId) {
       const checkbox = document.getElementById(`item-${itemId}`);
       const optionsDiv = document.getElementById(`options-${itemId}`);
+      
+      if (checkbox.checked) {
+        optionsDiv.classList.remove('hidden');
+        optionsDiv.classList.add('flex');
+      } else {
+        optionsDiv.classList.remove('flex');
+        optionsDiv.classList.add('hidden');
+      }
+    }
+
+    // 기부 전용 품목별 사이즈 옵션 표시 토글 (새로 추가)
+    function toggleDonateItemOptions(itemId) {
+      const checkbox = document.getElementById(`donate-item-${itemId}`);
+      const optionsDiv = document.getElementById(`donate-options-${itemId}`);
       
       if (checkbox.checked) {
         optionsDiv.classList.remove('hidden');
@@ -711,6 +792,11 @@
         });
         document.getElementById('pickup-time').innerHTML = '<option value="" disabled selected>날짜를 먼저 선택해 주세요</option>';
       } else if (formId === 'donation-form') {
+        const items = ['jacket', 'shirt', 'pants', 'vest'];
+        items.forEach(item => {
+          const options = document.getElementById(`donate-options-${item}`);
+          if (options) options.classList.add('hidden');
+        });
         document.getElementById('donate-time').innerHTML = '<option value="" disabled selected>날짜를 먼저 선택해 주세요</option>';
       }
     }
@@ -762,7 +848,7 @@
       });
     }
 
-    // 기부 제출 핸들러
+    // 기부 제출 핸들러 (사이즈 지정 지원하도록 업데이트)
     function handleDonationSubmit(event) {
       event.preventDefault();
 
@@ -780,10 +866,19 @@
       }
 
       const selectedItems = [];
-      checkedBoxes.forEach(box => {
-        selectedItems.push({
-          name: box.value + ' (기부 예정)'
-        });
+      const items = ['jacket', 'shirt', 'pants', 'vest'];
+      
+      items.forEach(item => {
+        const checkbox = document.getElementById(`donate-item-${item}`);
+        if (checkbox && checkbox.checked) {
+          const gender = document.getElementById(`donate-gender-${item}`).value;
+          const size = document.getElementById(`donate-size-${item}`).value;
+          const label = checkbox.nextElementSibling.innerText;
+
+          selectedItems.push({
+            name: `${label} (${gender} / ${size}호)`
+          });
+        }
       });
 
       const gradeText = grade === '졸업' ? '졸업생' : `${grade}학년 ${classNo}`;
@@ -814,12 +909,15 @@
     function renderReceipt(data) {
       const modal = document.getElementById('receipt-modal');
       const headerColor = document.getElementById('receipt-header-color');
+      const itemsLabel = document.getElementById('receipt-items-label');
       
       // 기부 및 거래 구분 별 색상 변경
       if (data.isDonation) {
         headerColor.className = "bg-pink-600 text-white p-6 text-center relative";
+        itemsLabel.innerText = "기부 품목 상세 (사이즈)";
       } else {
         headerColor.className = data.type === '소장 신청' ? "bg-emerald-600 text-white p-6 text-center relative" : "bg-blue-600 text-white p-6 text-center relative";
+        itemsLabel.innerText = "신청 품목 상세";
       }
 
       document.getElementById('receipt-type').innerText = data.type;
@@ -838,7 +936,7 @@
         itemRow.className = "flex justify-between py-0.5 border-b border-slate-100 last:border-none";
         itemRow.innerHTML = `
           <span>${item.name}</span>
-          <span class="font-bold text-slate-800">선택 완료</span>
+          <span class="font-bold text-slate-800">${data.isDonation ? '기부 예정' : '선택 완료'}</span>
         `;
         itemsContainer.appendChild(itemRow);
       });
