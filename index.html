@@ -1,0 +1,878 @@
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green 스마트 교복 은행</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- 네비게이션 바 -->
+  <nav class="bg-emerald-600 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2 cursor-pointer" onclick="showSection('home')">
+        <i class="fa-solid fa-graduation-cap text-2xl md:text-3xl"></i>
+        <span class="font-bold text-lg md:text-xl tracking-tight">Green 스마트 교복 은행</span>
+      </div>
+      <div class="flex space-x-1 md:space-x-4 text-sm md:text-base">
+        <button onclick="showSection('home')" class="hover:bg-emerald-700 px-3 py-2 rounded-lg transition">홈</button>
+        <button onclick="startService('buy')" class="hover:bg-emerald-700 px-3 py-2 rounded-lg transition">소장신청</button>
+        <button onclick="startService('rent')" class="hover:bg-emerald-700 px-3 py-2 rounded-lg transition">대여하기</button>
+        <button onclick="startService('donate')" class="hover:bg-emerald-700 px-3 py-2 rounded-lg transition">기부하기</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 메인 컨텐츠 영역 -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+
+    <!-- 1. 홈 섹션 (첫 페이지) -->
+    <section id="home-section" class="space-y-12 animate-fade-in">
+      <!-- 히어로 배너 -->
+      <div class="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl p-8 md:p-12 text-white shadow-lg text-center md:text-left relative overflow-hidden">
+        <div class="relative z-10 max-w-2xl">
+          <span class="bg-emerald-700 text-emerald-100 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">나눔과 환경을 위한 실천</span>
+          <h1 class="text-3xl md:text-5xl font-black mt-4 leading-tight">선배의 따뜻한 추억,<br>후배의 새로운 시작!</h1>
+          <p class="text-emerald-100 mt-4 text-base md:text-lg">
+            졸업생들이 기부한 깨끗한 교복을 물려받아 소장하거나 대여하여 자원 순환에 동참하고 가계 부담을 덜어보세요.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+            <button onclick="startService('buy')" class="bg-white text-emerald-700 font-bold px-6 py-3 rounded-xl shadow-md hover:bg-emerald-50 transition transform hover:-translate-y-0.5">교복 소장 신청</button>
+            <button onclick="startService('donate')" class="bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl border border-emerald-500 hover:bg-emerald-800 transition transform hover:-translate-y-0.5">교복 기부하기</button>
+          </div>
+        </div>
+        <!-- 데코레이션 아이콘 -->
+        <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-10 translate-y-10 hidden md:block">
+          <i class="fa-solid fa-graduation-cap text-[300px]"></i>
+        </div>
+      </div>
+
+      <!-- 서비스 선택 카드 -->
+      <div class="space-y-6">
+        <h2 class="text-2xl font-bold text-center text-slate-800">이용하실 서비스를 선택해 주세요</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- 카드 1: 소장 신청 -->
+          <div onclick="startService('buy')" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-emerald-200 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between h-full group">
+            <div>
+              <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
+                <i class="fa-solid fa-box-archive"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800 mb-2">교복 예약 소장</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">
+                상태가 우수한 세탁 완료 교복을 물려받아 영구 소장하실 수 있습니다. 미리 필요한 사이즈를 지정해 예약해 두세요.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center text-emerald-600 font-semibold text-sm">
+              소장 예약하기 <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- 카드 2: 교복 대여 -->
+          <div onclick="startService('rent')" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between h-full group">
+            <div>
+              <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800 mb-2">단기 대여 (최대 일주일)</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">
+                축제, 면접, 촬영 등 일시적인 사유나 갑작스러운 성장으로 교복 보수가 필요한 경우 최대 1주일 동안 대여할 수 있는 서비스입니다.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center text-blue-600 font-semibold text-sm">
+              대여 신청하기 <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- 카드 3: 교복 기부 -->
+          <div onclick="startService('donate')" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-xl hover:border-pink-200 cursor-pointer transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between h-full group">
+            <div>
+              <div class="w-14 h-14 bg-pink-50 text-pink-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-pink-600 group-hover:text-white transition-colors duration-300">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-800 mb-2">교복 기부하기</h3>
+              <p class="text-slate-500 text-sm leading-relaxed">
+                작아진 교복, 졸업 후 더 이상 입지 않는 교복을 기부해 주세요. 후배들이 소중하게 물려받아 건강한 나눔 순환을 완성합니다.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center text-pink-600 font-semibold text-sm">
+              기부 동참하기 <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 이용 안내 및 시간표 -->
+      <div class="bg-slate-100 rounded-2xl p-6 md:p-8 border border-slate-200">
+        <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+          <i class="fa-solid fa-circle-info text-emerald-600 mr-2"></i> 오프라인 은행 수령/기부 운영 시간 안내
+        </h3>
+        <p class="text-slate-600 text-sm mb-4 leading-relaxed">
+          교복 수령 및 방문 기부는 학생들의 원활한 학교생활을 위해 **지정된 요일과 시간에만 제한적으로 운영**됩니다. 예약 시 아래 운영 일정을 반드시 준수해 주세요.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-start space-x-3">
+            <div class="text-emerald-600 text-lg mt-0.5"><i class="fa-solid fa-calendar-day"></i></div>
+            <div>
+              <h4 class="font-bold text-slate-800 text-sm">운영 요일</h4>
+              <p class="text-slate-500 text-xs mt-1">매주 화요일, 목요일 (주 2일 운영)</p>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded-xl border border-slate-200 flex items-start space-x-3">
+            <div class="text-emerald-600 text-lg mt-0.5"><i class="fa-solid fa-clock"></i></div>
+            <div>
+              <h4 class="font-bold text-slate-800 text-sm">운영 시간 세션</h4>
+              <p class="text-slate-500 text-xs mt-1">1. 점심시간 (13:30 ~ 14:00)<br>2. 하교시간 (17:00 ~ 17:30)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 예약소장 / 대여 신청 폼 섹션 -->
+    <section id="form-section" class="hidden max-w-3xl mx-auto bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden animate-fade-in">
+      <!-- 폼 상단 헤더 -->
+      <div id="form-header" class="bg-emerald-600 text-white p-6 md:p-8 text-center relative">
+        <button onclick="showSection('home')" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-emerald-200 transition text-lg">
+          <i class="fa-solid fa-chevron-left mr-1"></i> 이전
+        </button>
+        <h2 id="form-title" class="text-2xl font-bold">교복 소장 신청</h2>
+        <p id="form-subtitle" class="text-emerald-100 text-sm mt-2">필요한 품목과 방문 일정을 선택해 주세요.</p>
+      </div>
+
+      <form id="uniform-form" onsubmit="handleFormSubmit(event)" class="p-6 md:p-8 space-y-8">
+        <!-- 숨겨진 모드 입력값 (buy / rent) -->
+        <input type="hidden" id="service-type" value="buy">
+
+        <!-- 1단계: 방문 수령 일정 선택 -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-800 border-b pb-2 flex items-center">
+            <span class="bg-emerald-100 text-emerald-800 w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold mr-2">1</span>
+            수령 일정 선택
+          </h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- 수령 희망 날짜 (달력) -->
+            <div>
+              <label for="pickup-date" class="block text-sm font-semibold text-slate-700 mb-1">수령 희망 날짜 <span class="text-rose-500">*</span></label>
+              <div class="relative">
+                <input type="date" id="pickup-date" required onchange="validateAndFormatDate()" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none text-slate-800 transition">
+              </div>
+              <p class="text-xs text-slate-500 mt-1">※ 매주 화요일 및 목요일만 선택 가능합니다.</p>
+            </div>
+
+            <!-- 수령 시간 (점심시간 / 하교시간 제한) -->
+            <div>
+              <label for="pickup-time" class="block text-sm font-semibold text-slate-700 mb-1">수령 희망 시간 <span class="text-rose-500">*</span></label>
+              <select id="pickup-time" required class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none text-slate-800 transition">
+                <option value="" disabled selected>날짜를 먼저 선택해 주세요</option>
+              </select>
+              <p class="text-xs text-slate-500 mt-1">※ 13:30 ~ 14:00 (점심) / 17:00 ~ 17:30 (하교) 운영</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2단계: 신청인 인적사항 -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-800 border-b pb-2 flex items-center">
+            <span class="bg-emerald-100 text-emerald-800 w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold mr-2">2</span>
+            신청인 정보 입력
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label for="user-name" class="block text-sm font-semibold text-slate-700 mb-1">학생 성명 <span class="text-rose-500">*</span></label>
+              <input type="text" id="user-name" required placeholder="홍길동" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition">
+            </div>
+            <div>
+              <label for="user-grade" class="block text-sm font-semibold text-slate-700 mb-1">학년/학반 <span class="text-rose-500">*</span></label>
+              <div class="grid grid-cols-2 gap-2">
+                <select id="user-grade" required class="px-3 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-sm">
+                  <option value="" disabled selected>학년</option>
+                  <option value="1">1학년</option>
+                  <option value="2">2학년</option>
+                  <option value="3">3학년</option>
+                </select>
+                <input type="text" id="user-class" required placeholder="1반" class="px-3 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none text-sm text-center">
+              </div>
+            </div>
+            <div>
+              <label for="user-phone" class="block text-sm font-semibold text-slate-700 mb-1">연락처 <span class="text-rose-500">*</span></label>
+              <input type="tel" id="user-phone" required placeholder="010-1234-5678" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition">
+            </div>
+          </div>
+        </div>
+
+        <!-- 3단계: 교복 및 사이즈 품목 선택 -->
+        <div class="space-y-4">
+          <div class="flex justify-between items-center border-b pb-2">
+            <h3 class="text-lg font-bold text-slate-800 flex items-center">
+              <span class="bg-emerald-100 text-emerald-800 w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold mr-2">3</span>
+              교복 품목 및 사이즈 선택
+            </h3>
+            <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md font-semibold">최대 4개 품목 선택 가능</span>
+          </div>
+
+          <!-- 품목 체크리스트 -->
+          <div class="space-y-3">
+            <!-- 품목 1: 자켓 -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition gap-3">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="item-jacket" onchange="toggleItemOptions('jacket')" class="w-5 h-5 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500">
+                <label for="item-jacket" class="font-bold text-slate-800 text-sm md:text-base cursor-pointer">학교 공식 자켓 (마이)</label>
+              </div>
+              <div id="options-jacket" class="hidden flex items-center space-x-2">
+                <select id="gender-jacket" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="공용">성별 구분 없음</option>
+                  <option value="남성용">남학생용</option>
+                  <option value="여성용">여학생용</option>
+                </select>
+                <select id="size-jacket" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="85">85 (S)</option>
+                  <option value="90">90 (M)</option>
+                  <option value="95" selected>95 (L)</option>
+                  <option value="100">100 (XL)</option>
+                  <option value="105">105 (XXL)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 품목 2: 셔츠/블라우스 -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition gap-3">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="item-shirt" onchange="toggleItemOptions('shirt')" class="w-5 h-5 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500">
+                <label for="item-shirt" class="font-bold text-slate-800 text-sm md:text-base cursor-pointer">기본 와이셔츠 / 블라우스</label>
+              </div>
+              <div id="options-shirt" class="hidden flex items-center space-x-2">
+                <select id="gender-shirt" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="남성용">남학생용 셔츠</option>
+                  <option value="여성용">여학생용 블라우스</option>
+                </select>
+                <select id="size-shirt" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="85">85</option>
+                  <option value="90">90</option>
+                  <option value="95" selected>95</option>
+                  <option value="100">100</option>
+                  <option value="105">105</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 품목 3: 바지 / 스커트 -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition gap-3">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="item-pants" onchange="toggleItemOptions('pants')" class="w-5 h-5 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500">
+                <label for="item-pants" class="font-bold text-slate-800 text-sm md:text-base cursor-pointer">동복 바지 / 스커트</label>
+              </div>
+              <div id="options-pants" class="hidden flex items-center space-x-2">
+                <select id="gender-pants" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="바지">남/여 공용 바지</option>
+                  <option value="치마">여학생용 스커트</option>
+                </select>
+                <select id="size-pants" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="65">허리 65(26)</option>
+                  <option value="71" selected>허리 71(28)</option>
+                  <option value="77">허리 77(30)</option>
+                  <option value="83">허리 83(32)</option>
+                  <option value="89">허리 89(35)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 품목 4: 조끼 -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-slate-200 hover:bg-slate-50 transition gap-3">
+              <div class="flex items-center space-x-3">
+                <input type="checkbox" id="item-vest" onchange="toggleItemOptions('vest')" class="w-5 h-5 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500">
+                <label for="item-vest" class="font-bold text-slate-800 text-sm md:text-base cursor-pointer">니트 조끼</label>
+              </div>
+              <div id="options-vest" class="hidden flex items-center space-x-2">
+                <select id="gender-vest" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="공용">공용 조끼</option>
+                </select>
+                <select id="size-vest" class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs md:text-sm">
+                  <option value="85">85</option>
+                  <option value="90">90</option>
+                  <option value="95" selected>95</option>
+                  <option value="100">100</option>
+                  <option value="105">105</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 최종 확인 및 약관 -->
+        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
+          <label class="flex items-start space-x-3 cursor-pointer">
+            <input type="checkbox" required class="w-4 h-4 text-emerald-600 border-slate-300 rounded focus:ring-emerald-500 mt-1">
+            <span class="text-xs text-slate-600 leading-relaxed">
+              [필수] 수령일 및 시간을 정확히 확인하였으며, 지정된 일정에 오프라인 교복 은행(본관 1층 학생회실 옆)을 방문하여 교복을 수령하는 것에 동의합니다. 미방문 시 예약은 자동 취소될 수 있습니다. (대여 신청 시 대여 기간은 최대 1주일입니다.)
+            </span>
+          </label>
+        </div>
+
+        <!-- 제출 버튼 -->
+        <div class="flex flex-col sm:flex-row items-center justify-end border-t pt-6 gap-4">
+          <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-emerald-600 text-white font-bold rounded-xl shadow-md hover:bg-emerald-700 transition transform hover:-translate-y-0.5">
+            <span id="submit-btn-text">소장 신청서 제출</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 3. 교복 기부 신청 폼 섹션 -->
+    <section id="donation-section" class="hidden max-w-3xl mx-auto bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden animate-fade-in">
+      <div class="bg-pink-600 text-white p-6 md:p-8 text-center relative">
+        <button onclick="showSection('home')" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-pink-200 transition text-lg">
+          <i class="fa-solid fa-chevron-left mr-1"></i> 이전
+        </button>
+        <h2 class="text-2xl font-bold">사랑의 교복 기부 신청</h2>
+        <p class="text-pink-100 text-sm mt-2">나눔을 실천해 주셔서 진심으로 감사드립니다.</p>
+      </div>
+
+      <form id="donation-form" onsubmit="handleDonationSubmit(event)" class="p-6 md:p-8 space-y-8">
+        
+        <!-- 1단계: 방문 기부 일정 선택 -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-800 border-b pb-2 flex items-center">
+            <span class="bg-pink-100 text-pink-800 w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold mr-2">1</span>
+            방문 기부 일정 선택
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- 수령 희망 날짜 -->
+            <div>
+              <label for="donate-date" class="block text-sm font-semibold text-slate-700 mb-1">방문 예정 날짜 <span class="text-rose-500">*</span></label>
+              <input type="date" id="donate-date" required onchange="validateDonateDate()" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none text-slate-800 transition">
+              <p class="text-xs text-slate-500 mt-1">※ 매주 화요일 및 목요일만 운영됩니다.</p>
+            </div>
+            <!-- 수령 시간 -->
+            <div>
+              <label for="donate-time" class="block text-sm font-semibold text-slate-700 mb-1">방문 예정 시간 <span class="text-rose-500">*</span></label>
+              <select id="donate-time" required class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none text-slate-800 transition">
+                <option value="" disabled selected>날짜를 먼저 선택해 주세요</option>
+              </select>
+              <p class="text-xs text-slate-500 mt-1">※ 13:30 ~ 14:00 (점심) / 17:00 ~ 17:30 (하교) 운영</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2단계: 기부자 인적사항 -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-800 border-b pb-2 flex items-center">
+            <span class="bg-pink-100 text-pink-800 w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold mr-2">2</span>
+            기부자 인적사항
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label for="donor-name" class="block text-sm font-semibold text-slate-700 mb-1">학생 성명 <span class="text-rose-500">*</span></label>
+              <input type="text" id="donor-name" required placeholder="홍길동" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition">
+            </div>
+            <div>
+              <label for="donor-grade" class="block text-sm font-semibold text-slate-700 mb-1">학년/학반 <span class="text-rose-500">*</span></label>
+              <div class="grid grid-cols-2 gap-2">
+                <select id="donor-grade" required class="px-3 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-sm">
+                  <option value="" disabled selected>학년</option>
+                  <option value="1">1학년</option>
+                  <option value="2">2학년</option>
+                  <option value="3">3학년</option>
+                  <option value="졸업">졸업생</option>
+                </select>
+                <input type="text" id="donor-class" required placeholder="1반" class="px-3 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-sm text-center">
+              </div>
+            </div>
+            <div>
+              <label for="donor-phone" class="block text-sm font-semibold text-slate-700 mb-1">연락처 <span class="text-rose-500">*</span></label>
+              <input type="tel" id="donor-phone" required placeholder="010-1234-5678" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition">
+            </div>
+          </div>
+        </div>
+
+        <!-- 3단계: 기부 품목 선택 -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-800 border-b pb-2 flex items-center">
+            <span class="bg-pink-100 text-pink-800 w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold mr-2">3</span>
+            기부할 품목 선택 (다중 선택 가능)
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <label class="flex items-center justify-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-pink-50 hover:border-pink-300 transition select-none flex-col">
+              <input type="checkbox" name="donate-items" value="자켓" class="w-5 h-5 text-pink-600 mb-2">
+              <span class="font-semibold text-slate-800 text-sm">자켓 / 마이</span>
+            </label>
+            <label class="flex items-center justify-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-pink-50 hover:border-pink-300 transition select-none flex-col">
+              <input type="checkbox" name="donate-items" value="셔츠/블라우스" class="w-5 h-5 text-pink-600 mb-2">
+              <span class="font-semibold text-slate-800 text-sm">셔츠 / 블라우스</span>
+            </label>
+            <label class="flex items-center justify-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-pink-50 hover:border-pink-300 transition select-none flex-col">
+              <input type="checkbox" name="donate-items" value="바지/스커트" class="w-5 h-5 text-pink-600 mb-2">
+              <span class="font-semibold text-slate-800 text-sm">바지 / 치마</span>
+            </label>
+            <label class="flex items-center justify-center p-4 border border-slate-200 rounded-xl cursor-pointer hover:bg-pink-50 hover:border-pink-300 transition select-none flex-col">
+              <input type="checkbox" name="donate-items" value="조끼/체육복" class="w-5 h-5 text-pink-600 mb-2">
+              <span class="font-semibold text-slate-800 text-sm">조끼 / 체육복 등</span>
+            </label>
+          </div>
+          <div>
+            <label for="donor-memo" class="block text-sm font-semibold text-slate-700 mb-1">추가 기부 내용 또는 한마디 (선택)</label>
+            <textarea id="donor-memo" rows="3" placeholder="예: 3년간 깨끗하게 입었던 교복입니다. 후배님께 도움이 되길 바랍니다!" class="w-full px-4 py-2.5 border border-slate-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition text-sm"></textarea>
+          </div>
+        </div>
+
+        <!-- 혜택 안내 -->
+        <div class="bg-pink-50 rounded-xl p-4 border border-pink-100">
+          <h4 class="font-bold text-pink-800 text-sm mb-1"><i class="fa-solid fa-gift mr-1"></i> 교복 기부 혜택 안내</h4>
+          <p class="text-pink-700 text-xs leading-relaxed">
+            기부해 주시는 소중한 품목은 전문 세탁 과정을 거쳐 깨끗하게 신입생 및 재학생들에게 전달됩니다. 기부해 주신 모든 분들에게 오프라인 기부 접수 완료 시 **기부 인증 마일리지** 또는 **나눔 기념 상품**이 부여됩니다.
+          </p>
+        </div>
+
+        <!-- 신청 완료 버튼 -->
+        <div class="flex justify-end border-t pt-6">
+          <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-pink-600 text-white font-bold rounded-xl shadow-md hover:bg-pink-700 transition transform hover:-translate-y-0.5">
+            기부 신청서 등록하기
+          </button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="bg-slate-800 text-slate-400 py-8 border-t border-slate-700 text-sm mt-12">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+      <div class="text-center md:text-left">
+        <p class="font-bold text-slate-300">Green 스마트 교복 은행 시스템</p>
+        <p class="text-xs mt-1">본 서비스는 학교 학생회 및 학부모 사회적 협동조합에 의해 공동 운영됩니다.</p>
+      </div>
+      <div class="flex space-x-6 text-xs">
+        <a href="#" class="hover:text-slate-200">개인정보처리방침</a>
+        <a href="#" class="hover:text-slate-200">이용약관</a>
+        <a href="#" class="hover:text-slate-200">학생회 문의</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 4. 결과 신청 확인서 모달 (신청 완료 시 표시) -->
+  <div id="receipt-modal" class="fixed inset-0 bg-slate-900/60 flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl overflow-hidden border border-slate-100 animate-zoom-in">
+      
+      <!-- 모달 상단 배너 -->
+      <div id="receipt-header-color" class="bg-emerald-600 text-white p-6 text-center relative">
+        <h3 class="text-xl font-bold">신청이 완료되었습니다!</h3>
+        <p class="text-xs opacity-90 mt-1">방문하실 때 아래 신청 예약증을 보여주세요.</p>
+        
+        <!-- 둥근 구멍 장식 (티켓 스타일) -->
+        <div class="absolute -bottom-3 left-0 right-0 flex justify-between px-6">
+          <div class="w-6 h-6 bg-slate-900/60 rounded-full"></div>
+          <div class="w-6 h-6 bg-slate-900/60 rounded-full"></div>
+        </div>
+      </div>
+
+      <!-- 영수증 본문 -->
+      <div class="p-6 pt-8 space-y-6">
+        <!-- 티켓 타입 표시 -->
+        <div class="flex justify-between items-center border-b border-dashed border-slate-200 pb-4">
+          <div>
+            <span class="text-xs text-slate-400 block uppercase">구분</span>
+            <span id="receipt-type" class="font-bold text-slate-800 text-base">예약 소장</span>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-slate-400 block uppercase">예약 번호</span>
+            <span id="receipt-id" class="font-mono text-sm font-bold text-emerald-600">UNIF-8172</span>
+          </div>
+        </div>
+
+        <!-- 예약 상세 데이터 -->
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between">
+            <span class="text-slate-400">신청인</span>
+            <span id="receipt-name" class="font-bold text-slate-800">홍길동 (1학년 2반)</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">연락처</span>
+            <span id="receipt-phone" class="font-bold text-slate-800">010-0000-0000</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">방문 예정 일자</span>
+            <span id="receipt-date" class="font-bold text-slate-800 text-right">2026년 06월 16일 (화)</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-400">방문 예정 시간</span>
+            <span id="receipt-time" class="font-bold text-emerald-600">점심시간 (13:30 ~ 14:00)</span>
+          </div>
+          
+          <!-- 선택한 품목 리스트 -->
+          <div class="border-t border-slate-100 pt-3 mt-3">
+            <span class="text-xs text-slate-400 block mb-2">신청 품목 상세</span>
+            <div id="receipt-items" class="space-y-1.5 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl max-h-32 overflow-y-auto">
+              <!-- JS로 동적 렌더링 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 가상 바코드 영역 -->
+        <div class="bg-slate-50 p-4 rounded-xl flex flex-col items-center justify-center border border-slate-100">
+          <!-- 바코드 선 표현 (SVG) -->
+          <svg class="w-full h-12 text-slate-800" fill="currentColor" viewBox="0 0 100 30" preserveAspectRatio="none">
+            <rect x="5" y="5" width="2" height="20" />
+            <rect x="9" y="5" width="4" height="20" />
+            <rect x="15" y="5" width="1" height="20" />
+            <rect x="18" y="5" width="3" height="20" />
+            <rect x="23" y="5" width="1" height="20" />
+            <rect x="26" y="5" width="4" height="20" />
+            <rect x="32" y="5" width="2" height="20" />
+            <rect x="36" y="5" width="3" height="20" />
+            <rect x="41" y="5" width="1" height="20" />
+            <rect x="44" y="5" width="5" height="20" />
+            <rect x="51" y="5" width="2" height="20" />
+            <rect x="55" y="5" width="1" height="20" />
+            <rect x="58" y="5" width="4" height="20" />
+            <rect x="64" y="5" width="2" height="20" />
+            <rect x="68" y="5" width="3" height="20" />
+            <rect x="73" y="5" width="1" height="20" />
+            <rect x="76" y="5" width="5" height="20" />
+            <rect x="83" y="5" width="2" height="20" />
+            <rect x="87" y="5" width="4" height="20" />
+            <rect x="93" y="5" width="2" height="20" />
+          </svg>
+          <span class="text-[10px] font-mono text-slate-400 mt-1 tracking-[4px]">G-SCHOOL-UNIFORM-2026</span>
+        </div>
+
+      </div>
+
+      <!-- 모달 닫기 버튼 -->
+      <div class="bg-slate-50 px-6 py-4 flex justify-end">
+        <button onclick="closeModal()" class="px-5 py-2.5 bg-slate-700 text-white font-bold rounded-xl text-sm hover:bg-slate-800 transition">
+          확인 후 닫기
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 요일 이름 매핑
+    const weekDays = ['일', '월', '화', '수', '목', '금', '토'];
+
+    // 1. 섹션 전환 시스템
+    function showSection(sectionId) {
+      // 모든 주요 섹션 숨기기
+      document.getElementById('home-section').classList.add('hidden');
+      document.getElementById('form-section').classList.add('hidden');
+      document.getElementById('donation-section').classList.add('hidden');
+
+      // 선택한 섹션 활성화
+      if (sectionId === 'home') {
+        document.getElementById('home-section').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (sectionId === 'form') {
+        document.getElementById('form-section').classList.remove('hidden');
+      } else if (sectionId === 'donate') {
+        document.getElementById('donation-section').classList.remove('hidden');
+      }
+    }
+
+    // 서비스 시작 제어기
+    function startService(type) {
+      if (type === 'buy' || type === 'rent') {
+        // 예약 폼 초기 설정
+        const isRent = type === 'rent';
+        document.getElementById('service-type').value = type;
+
+        // UI 스타일 변경 (대여/소장 테마 색상 설정)
+        const header = document.getElementById('form-header');
+        const submitBtn = document.getElementById('submit-btn-text');
+        
+        if (isRent) {
+          header.className = "bg-blue-600 text-white p-6 md:p-8 text-center relative";
+          document.getElementById('form-title').innerText = "교복 대여 신청 (단기 최대 일주일)";
+          document.getElementById('form-subtitle').innerText = "필요한 교복 품목과 대여 일정을 정해 예약하세요.";
+          submitBtn.innerText = "대여 신청하기";
+        } else {
+          header.className = "bg-emerald-600 text-white p-6 md:p-8 text-center relative";
+          document.getElementById('form-title').innerText = "교복 소장 신청";
+          document.getElementById('form-subtitle').innerText = "원하는 사이즈의 교복을 미리 확인하여 소장 예약해 두세요.";
+          submitBtn.innerText = "소장 예약 신청";
+        }
+
+        resetForm('uniform-form');
+
+        // 날짜 선택 제한 설정
+        setupDatePicker('pickup-date');
+
+        showSection('form');
+      } else if (type === 'donate') {
+        resetForm('donation-form');
+        setupDatePicker('donate-date');
+        showSection('donate');
+      }
+    }
+
+    // 날짜 제한 설정 (과거 날짜 선택 방지)
+    function setupDatePicker(elementId) {
+      const dateInput = document.getElementById(elementId);
+      const today = new Date();
+      
+      // 내일부터 예약 가능하도록 설정
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      
+      const yyyy = tomorrow.getFullYear();
+      const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+      const dd = String(tomorrow.getDate()).padStart(2, '0');
+      
+      dateInput.min = `${yyyy}-${mm}-${dd}`;
+    }
+
+    // 수령 날짜 유효성 검사 (화/목 제한) 및 시간 세션 주입
+    function validateAndFormatDate() {
+      const dateInput = document.getElementById('pickup-date');
+      const selectTime = document.getElementById('pickup-time');
+      const selectedDate = new Date(dateInput.value);
+      
+      if (!dateInput.value) return;
+
+      const dayIndex = selectedDate.getDay(); // 0: 일, 1: 월, 2: 화, 3: 수, 4: 목, 5: 금, 6: 토
+
+      // 화요일(2), 목요일(4)만 허용
+      if (dayIndex !== 2 && dayIndex !== 4) {
+        customAlert('교복 수령은 [화요일] 또는 [목요일]에만 가능합니다.\n다른 요일을 선택해 주세요.');
+        dateInput.value = '';
+        selectTime.innerHTML = '<option value="" disabled selected>날짜를 먼저 선택해 주세요</option>';
+        return;
+      }
+
+      // 화/목을 정확히 선택한 경우 시간 세션 구성 (13:30 ~ 14:00 점심 / 17:00 ~ 17:30 하교)
+      populateTimeOptions('pickup-time');
+    }
+
+    // 기부 날짜 유효성 검사 (화/목 제한)
+    function validateDonateDate() {
+      const dateInput = document.getElementById('donate-date');
+      const selectTime = document.getElementById('donate-time');
+      const selectedDate = new Date(dateInput.value);
+
+      if (!dateInput.value) return;
+
+      const dayIndex = selectedDate.getDay();
+
+      if (dayIndex !== 2 && dayIndex !== 4) {
+        customAlert('방문 기부는 [화요일] 또는 [목요일]에만 운영됩니다.\n다른 요일을 선택해 주세요.');
+        dateInput.value = '';
+        selectTime.innerHTML = '<option value="" disabled selected>날짜를 먼저 선택해 주세요</option>';
+        return;
+      }
+
+      populateTimeOptions('donate-time');
+    }
+
+    // 운영 시간 세션 드롭다운 채우기 (새 요건 반영)
+    function populateTimeOptions(selectId) {
+      const select = document.getElementById(selectId);
+      select.innerHTML = `
+        <option value="" disabled selected>방문 시간을 선택해 주세요</option>
+        <option value="점심시간 (13:30 ~ 14:00)">점심시간 (13:30 ~ 14:00)</option>
+        <option value="하교시간 (17:00 ~ 17:30)">하교시간 (17:00 ~ 17:30)</option>
+      `;
+    }
+
+    // 품목 체크 시 옵션 토글
+    function toggleItemOptions(itemId) {
+      const checkbox = document.getElementById(`item-${itemId}`);
+      const optionsDiv = document.getElementById(`options-${itemId}`);
+      
+      if (checkbox.checked) {
+        optionsDiv.classList.remove('hidden');
+        optionsDiv.classList.add('flex');
+      } else {
+        optionsDiv.classList.remove('flex');
+        optionsDiv.classList.add('hidden');
+      }
+    }
+
+    // 폼 초기화 유틸리티
+    function resetForm(formId) {
+      const form = document.getElementById(formId);
+      form.reset();
+      
+      if (formId === 'uniform-form') {
+        const items = ['jacket', 'shirt', 'pants', 'vest'];
+        items.forEach(item => {
+          const options = document.getElementById(`options-${item}`);
+          if (options) options.classList.add('hidden');
+        });
+        document.getElementById('pickup-time').innerHTML = '<option value="" disabled selected>날짜를 먼저 선택해 주세요</option>';
+      } else if (formId === 'donation-form') {
+        document.getElementById('donate-time').innerHTML = '<option value="" disabled selected>날짜를 먼저 선택해 주세요</option>';
+      }
+    }
+
+    // 대여/예약구매 제출 핸들러
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const type = document.getElementById('service-type').value;
+      const date = document.getElementById('pickup-date').value;
+      const time = document.getElementById('pickup-time').value;
+      const name = document.getElementById('user-name').value;
+      const grade = document.getElementById('user-grade').value;
+      const classNo = document.getElementById('user-class').value;
+      const phone = document.getElementById('user-phone').value;
+
+      // 선택한 품목 리스트 수집
+      const selectedItems = [];
+      const items = ['jacket', 'shirt', 'pants', 'vest'];
+      
+      items.forEach(item => {
+        const checkbox = document.getElementById(`item-${item}`);
+        if (checkbox && checkbox.checked) {
+          const gender = document.getElementById(`gender-${item}`).value;
+          const size = document.getElementById(`size-${item}`).value;
+          const label = checkbox.nextElementSibling.innerText;
+
+          selectedItems.push({
+            name: `${label} (${gender} / ${size}호)`
+          });
+        }
+      });
+
+      if (selectedItems.length === 0) {
+        customAlert('수령할 교복 품목을 최소 하나 이상 선택해 주세요.');
+        return;
+      }
+
+      // 모달 렌더링 및 노출
+      renderReceipt({
+        type: type === 'buy' ? '소장 신청' : '단기 대여 (최대 일주일)',
+        id: 'UNIF-' + Math.floor(100000 + Math.random() * 900000),
+        name: `${name} (${grade}학년 ${classNo})`,
+        phone: phone,
+        date: formatDateString(date),
+        time: time,
+        items: selectedItems,
+        isDonation: false
+      });
+    }
+
+    // 기부 제출 핸들러
+    function handleDonationSubmit(event) {
+      event.preventDefault();
+
+      const date = document.getElementById('donate-date').value;
+      const time = document.getElementById('donate-time').value;
+      const name = document.getElementById('donor-name').value;
+      const grade = document.getElementById('donor-grade').value;
+      const classNo = document.getElementById('donor-class').value;
+      const phone = document.getElementById('donor-phone').value;
+
+      const checkedBoxes = document.querySelectorAll('input[name="donate-items"]:checked');
+      if (checkedBoxes.length === 0) {
+        customAlert('기부하실 교복 품목을 최소 하나 이상 체크해 주세요.');
+        return;
+      }
+
+      const selectedItems = [];
+      checkedBoxes.forEach(box => {
+        selectedItems.push({
+          name: box.value + ' (기부 예정)'
+        });
+      });
+
+      const gradeText = grade === '졸업' ? '졸업생' : `${grade}학년 ${classNo}`;
+
+      renderReceipt({
+        type: '사랑의 기부',
+        id: 'GIFT-' + Math.floor(100000 + Math.random() * 900000),
+        name: `${name} (${gradeText})`,
+        phone: phone,
+        date: formatDateString(date),
+        time: time,
+        items: selectedItems,
+        isDonation: true
+      });
+    }
+
+    // 날짜 텍스트 정렬
+    function formatDateString(dateStr) {
+      const date = new Date(dateStr);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const dayName = weekDays[date.getDay()];
+      return `${year}년 ${month}월 ${day}일 (${dayName})`;
+    }
+
+    // 영수증 모달 출력용 함수
+    function renderReceipt(data) {
+      const modal = document.getElementById('receipt-modal');
+      const headerColor = document.getElementById('receipt-header-color');
+      
+      // 기부 및 거래 구분 별 색상 변경
+      if (data.isDonation) {
+        headerColor.className = "bg-pink-600 text-white p-6 text-center relative";
+      } else {
+        headerColor.className = data.type === '소장 신청' ? "bg-emerald-600 text-white p-6 text-center relative" : "bg-blue-600 text-white p-6 text-center relative";
+      }
+
+      document.getElementById('receipt-type').innerText = data.type;
+      document.getElementById('receipt-id').innerText = data.id;
+      document.getElementById('receipt-name').innerText = data.name;
+      document.getElementById('receipt-phone').innerText = data.phone;
+      document.getElementById('receipt-date').innerText = data.date;
+      document.getElementById('receipt-time').innerText = data.time;
+
+      // 품목 목록 렌더링
+      const itemsContainer = document.getElementById('receipt-items');
+      itemsContainer.innerHTML = '';
+      
+      data.items.forEach(item => {
+        const itemRow = document.createElement('div');
+        itemRow.className = "flex justify-between py-0.5 border-b border-slate-100 last:border-none";
+        itemRow.innerHTML = `
+          <span>${item.name}</span>
+          <span class="font-bold text-slate-800">선택 완료</span>
+        `;
+        itemsContainer.appendChild(itemRow);
+      });
+
+      // 모달 활성화
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('receipt-modal').classList.add('hidden');
+      showSection('home');
+    }
+
+    // 브라우저 얼럿 대체 함수 (iframe 내 동작 고려)
+    function customAlert(message) {
+      const alertContainer = document.createElement('div');
+      alertContainer.className = "fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-[99] animate-fade-in";
+      alertContainer.innerHTML = `
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center shadow-xl space-y-4">
+          <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center text-xl mx-auto">
+            <i class="fa-solid fa-circle-exclamation"></i>
+          </div>
+          <p class="text-sm text-slate-700 whitespace-pre-line font-medium">${message}</p>
+          <button onclick="this.parentElement.parentElement.remove()" class="w-full py-2 bg-slate-800 text-white font-bold rounded-xl text-sm hover:bg-slate-900 transition">
+            확인
+          </button>
+        </div>
+      `;
+      document.body.appendChild(alertContainer);
+    }
+  </script>
+</body>
+</html>
+
+```
