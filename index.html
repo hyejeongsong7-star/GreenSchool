@@ -1,592 +1,615 @@
+HTML
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Green 스마트 교복 은행</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
-    body { font-family: 'Noto Sans KR', sans-serif; }
-    .hidden { display: none !important; }
-    .fade { animation: fade .25s ease-out; }
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green 스마트 교복 은행</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+body{font-family:'Noto Sans KR',sans-serif}
+.hidden{display:none!important}
+</style>
 </head>
-
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
-<!-- 상단 메뉴 -->
-<nav class="bg-emerald-600 text-white sticky top-0 z-40 shadow-md">
-  <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
-    <button onclick="showSection('home')" class="font-bold text-lg">
-      <i class="fa-solid fa-graduation-cap mr-2"></i>Green 스마트 교복 은행
-    </button>
-    <div class="flex flex-wrap gap-2 text-sm">
-      <button onclick="showSection('home')" class="px-3 py-2 rounded-lg hover:bg-emerald-700">홈</button>
-      <button onclick="startService('buy')" class="px-3 py-2 rounded-lg hover:bg-emerald-700">소장 신청</button>
-      <button onclick="startService('rent')" class="px-3 py-2 rounded-lg hover:bg-emerald-700">대여하기</button>
-      <button onclick="startService('donate')" class="px-3 py-2 rounded-lg hover:bg-emerald-700">기부하기</button>
-    </div>
-  </div>
+<nav class="bg-emerald-600 text-white sticky top-0 z-40 shadow">
+<div class="max-w-6xl mx-auto p-4 flex flex-wrap justify-between items-center gap-3">
+<button onclick="showSection('home')" class="font-bold text-lg">
+<i class="fa-solid fa-graduation-cap mr-2"></i>Green 스마트 교복 은행
+</button>
+<div class="flex flex-wrap gap-2 text-sm">
+<button onclick="showSection('home')" class="p-2">홈</button>
+<button onclick="startService('buy')" class="p-2">소장 신청</button>
+<button onclick="startService('rent')" class="p-2">대여하기</button>
+<button onclick="startService('donate')" class="p-2">기부하기</button>
+</div>
+</div>
 </nav>
 
-<main class="max-w-6xl w-full mx-auto px-4 py-8 flex-grow">
+<main class="max-w-6xl w-full mx-auto p-4 md:p-8 flex-grow">
 
-<!-- 홈 화면 -->
-<section id="home-section" class="space-y-10 fade">
-  <div class="bg-gradient-to-r from-emerald-500 to-teal-600 rounded-2xl p-8 md:p-12 text-white shadow-lg">
-    <span class="bg-emerald-700 px-3 py-1 rounded-full text-xs font-bold">나눔과 환경 보호</span>
-    <h1 class="text-3xl md:text-5xl font-black mt-5 leading-tight">
-      선배의 따뜻한 추억,<br>후배의 새로운 시작!
-    </h1>
-    <p class="mt-4 text-emerald-50 leading-relaxed">
-      깨끗한 교복을 물려받고 나누며 환경 보호와 자원 순환에 동참해요.
-    </p>
-    <div class="mt-7 flex flex-wrap gap-3">
-      <button onclick="startService('buy')" class="bg-white text-emerald-700 font-bold px-5 py-3 rounded-xl">교복 소장 신청</button>
-      <button onclick="startService('donate')" class="bg-emerald-800 text-white font-bold px-5 py-3 rounded-xl">교복 기부하기</button>
-    </div>
-  </div>
+<!-- 홈 -->
+<section id="home-section" class="space-y-8">
+<div class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl p-8 md:p-12">
+<span class="text-xs bg-emerald-800 px-3 py-1 rounded-full">나눔과 환경 보호</span>
+<h1 class="text-3xl md:text-5xl font-black mt-5 leading-tight">선배의 따뜻한 추억,<br>후배의 새로운 시작!</h1>
+<p class="mt-4 text-emerald-50">교복을 나누고 재사용하며 환경 보호와 자원 순환에 동참해요.</p>
+<div class="flex flex-wrap gap-3 mt-7">
+<button onclick="startService('buy')" class="bg-white text-emerald-700 font-bold px-5 py-3 rounded-xl">교복 소장 신청</button>
+<button onclick="startService('donate')" class="bg-emerald-800 text-white font-bold px-5 py-3 rounded-xl">교복 기부하기</button>
+</div>
+</div>
 
-  <div>
-    <h2 class="text-2xl font-bold text-center mb-5">이용 서비스</h2>
-    <div class="grid md:grid-cols-3 gap-5">
-      <button onclick="startService('buy')" class="text-left bg-white rounded-2xl p-6 shadow-sm border hover:border-emerald-400">
-        <i class="fa-solid fa-box-archive text-3xl text-emerald-600"></i>
-        <h3 class="font-bold text-xl mt-4">교복 소장 신청</h3>
-        <p class="text-sm text-slate-500 mt-2">필요한 교복을 예약하고 소장해요.</p>
-      </button>
-      <button onclick="startService('rent')" class="text-left bg-white rounded-2xl p-6 shadow-sm border hover:border-blue-400">
-        <i class="fa-solid fa-clock-rotate-left text-3xl text-blue-600"></i>
-        <h3 class="font-bold text-xl mt-4">교복 대여</h3>
-        <p class="text-sm text-slate-500 mt-2">필요한 기간 동안 최대 일주일 대여해요.</p>
-      </button>
-      <button onclick="startService('donate')" class="text-left bg-white rounded-2xl p-6 shadow-sm border hover:border-pink-400">
-        <i class="fa-solid fa-hand-holding-heart text-3xl text-pink-600"></i>
-        <h3 class="font-bold text-xl mt-4">교복 기부</h3>
-        <p class="text-sm text-slate-500 mt-2">여러 벌의 교복을 한 번에 기부할 수 있어요.</p>
-      </button>
-    </div>
-  </div>
+<div>
+<h2 class="text-2xl font-bold mb-4">이용 서비스</h2>
+<div class="grid md:grid-cols-3 gap-4">
+<button onclick="startService('buy')" class="text-left bg-white border rounded-2xl p-6 hover:border-emerald-500">
+<i class="fa-solid fa-box-archive text-3xl text-emerald-600"></i>
+<h3 class="font-bold text-xl mt-3">교복 소장 신청</h3>
+<p class="text-sm text-slate-500 mt-2">필요한 교복을 예약해 소장해요.</p>
+</button>
+<button onclick="startService('rent')" class="text-left bg-white border rounded-2xl p-6 hover:border-blue-500">
+<i class="fa-solid fa-clock-rotate-left text-3xl text-blue-600"></i>
+<h3 class="font-bold text-xl mt-3">교복 대여</h3>
+<p class="text-sm text-slate-500 mt-2">최대 일주일 동안 교복을 대여해요.</p>
+</button>
+<button onclick="startService('donate')" class="text-left bg-white border rounded-2xl p-6 hover:border-pink-500">
+<i class="fa-solid fa-hand-holding-heart text-3xl text-pink-600"></i>
+<h3 class="font-bold text-xl mt-3">교복 기부</h3>
+<p class="text-sm text-slate-500 mt-2">여러 품목과 여러 벌을 기부할 수 있어요.</p>
+</button>
+</div>
+</div>
 
-  <div class="bg-slate-100 rounded-2xl p-6 border">
-    <h3 class="font-bold text-lg mb-3"><i class="fa-solid fa-calendar-days text-emerald-600 mr-2"></i>운영 시간</h3>
-    <p class="text-sm text-slate-600">운영 요일: 매주 화요일, 목요일</p>
-    <p class="text-sm text-slate-600 mt-1">운영 시간: 13:30~14:00 / 17:00~17:30</p>
-    <p class="text-xs text-slate-500 mt-2">방문 전 날짜와 시간을 예약해 주세요.</p>
-  </div>
+<!-- 재고 현황 -->
+<div class="bg-white rounded-2xl border p-6 md:p-8">
+<div class="flex justify-between items-center flex-wrap gap-3">
+<h2 class="text-2xl font-bold"><i class="fa-solid fa-boxes-stacked text-emerald-600 mr-2"></i>교복 재고 현황</h2>
+<button onclick="showStockAdmin()" class="text-sm border rounded-lg px-3 py-2">재고 관리</button>
+</div>
+<p class="text-sm text-slate-500 mt-2 mb-5">현재 남아 있는 교복 수량입니다.</p>
+<div id="stock-list" class="grid sm:grid-cols-2 gap-3"></div>
+<p class="text-xs text-slate-400 mt-4">※ 시제품에서는 품목별 총수량으로 관리하며 사이즈별 재고는 구분하지 않습니다.</p>
+</div>
 
-  <!-- 환경 보호 효과 -->
-  <div class="bg-white rounded-2xl p-6 md:p-8 border border-emerald-100 shadow-sm">
-    <div class="text-center mb-7">
-      <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold">GREEN ACTION</span>
-      <h2 class="text-2xl md:text-3xl font-black mt-4">교복 나눔으로 지구를 지켜요</h2>
-      <p class="text-slate-500 mt-3 text-sm md:text-base">
-        입지 않는 교복에 새로운 주인을 찾아 주면 자원 낭비를 줄이는 데 도움이 됩니다.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-4">
-      <div class="bg-emerald-50 rounded-xl p-5">
-        <i class="fa-solid fa-recycle text-3xl text-emerald-600"></i>
-        <h3 class="font-bold mt-3">의류 폐기물 감소</h3>
-        <p class="text-sm text-slate-600 mt-2">교복을 버리는 대신 재사용하면 의류 폐기물을 줄이는 데 도움이 됩니다.</p>
-      </div>
-      <div class="bg-blue-50 rounded-xl p-5">
-        <i class="fa-solid fa-leaf text-3xl text-blue-600"></i>
-        <h3 class="font-bold mt-3">자원과 에너지 절약</h3>
-        <p class="text-sm text-slate-600 mt-2">새 교복의 생산 수요를 줄여 섬유 원료와 에너지 절약에 기여할 수 있습니다.</p>
-      </div>
-      <div class="bg-amber-50 rounded-xl p-5">
-        <i class="fa-solid fa-earth-asia text-3xl text-amber-600"></i>
-        <h3 class="font-bold mt-3">탄소 배출 감소에 기여</h3>
-        <p class="text-sm text-slate-600 mt-2">교복을 오래 사용하면 새 옷 생산 과정에서 발생하는 온실가스를 줄이는 데 도움이 될 수 있습니다.</p>
-      </div>
-    </div>
-    <div class="mt-5 bg-emerald-50 border border-emerald-100 rounded-xl p-5 text-center">
-      <p class="font-bold text-emerald-800">한 벌의 교복에도 새로운 가치를!</p>
-      <p class="text-sm text-slate-600 mt-2">기부하고, 다시 입고, 오래 사용하는 습관으로 환경 보호를 실천해요.</p>
-    </div>
-  </div>
+<!-- 재고 관리 -->
+<div id="stock-admin" class="hidden bg-white rounded-2xl border p-6">
+<h3 class="text-xl font-bold mb-2">재고 관리</h3>
+<p class="text-sm text-slate-500 mb-4">현재 재고 수량을 수정할 수 있습니다.</p>
+<div id="stock-edit-list" class="space-y-3"></div>
+<div class="flex flex-wrap gap-2 mt-5">
+<button onclick="saveManualStock()" class="bg-emerald-600 text-white font-bold rounded-xl px-5 py-3">재고 저장</button>
+<button onclick="hideStockAdmin()" class="bg-slate-200 rounded-xl px-5 py-3">닫기</button>
+</div>
+<p class="text-xs text-amber-700 mt-3">주의: 이 관리 화면은 같은 브라우저에서만 적용됩니다. 실제 운영 시에는 관리자 인증이 필요합니다.</p>
+</div>
+
+<div class="bg-slate-100 rounded-2xl p-6">
+<h3 class="font-bold text-lg mb-3"><i class="fa-solid fa-calendar-days text-emerald-600 mr-2"></i>운영 시간</h3>
+<p class="text-sm text-slate-600">매주 화요일, 목요일</p>
+<p class="text-sm text-slate-600 mt-1">13:30~14:00 / 17:00~17:30</p>
+</div>
+
+<!-- 환경 보호 효과 -->
+<div class="bg-white rounded-2xl border border-emerald-100 p-6 md:p-8">
+<div class="text-center mb-6">
+<span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">GREEN ACTION</span>
+<h2 class="text-2xl md:text-3xl font-black mt-4">교복 나눔으로 지구를 지켜요</h2>
+<p class="text-slate-500 mt-3 text-sm">작은 나눔이 자원 낭비를 줄이고 지속 가능한 학교를 만듭니다.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-4">
+<div class="bg-emerald-50 p-5 rounded-xl">
+<i class="fa-solid fa-recycle text-3xl text-emerald-600"></i>
+<h3 class="font-bold mt-3">의류 폐기물 감소</h3>
+<p class="text-sm text-slate-600 mt-2">입지 않는 교복을 재사용하면 버려지는 의류를 줄이는 데 도움이 됩니다.</p>
+</div>
+<div class="bg-blue-50 p-5 rounded-xl">
+<i class="fa-solid fa-leaf text-3xl text-blue-600"></i>
+<h3 class="font-bold mt-3">자원과 에너지 절약</h3>
+<p class="text-sm text-slate-600 mt-2">새 교복 생산 수요를 줄여 섬유 원료와 에너지 절약에 기여할 수 있습니다.</p>
+</div>
+<div class="bg-amber-50 p-5 rounded-xl">
+<i class="fa-solid fa-earth-asia text-3xl text-amber-600"></i>
+<h3 class="font-bold mt-3">탄소 배출 감소에 기여</h3>
+<p class="text-sm text-slate-600 mt-2">교복을 오래 사용하면 새 옷 생산 과정의 온실가스 배출을 줄이는 데 도움이 됩니다.</p>
+</div>
+</div>
+<div class="bg-emerald-50 p-5 rounded-xl text-center mt-5">
+<p class="font-bold text-emerald-800">한 벌의 교복에도 새로운 가치를!</p>
+<p class="text-sm text-slate-600 mt-2">기부하고, 다시 입고, 오래 사용하는 습관으로 환경 보호를 실천해요.</p>
+</div>
+</div>
 </section>
 
-<!-- 소장 및 대여 신청 화면 -->
-<section id="form-section" class="hidden max-w-3xl mx-auto bg-white rounded-2xl shadow border overflow-hidden">
-  <div id="form-header" class="bg-emerald-600 text-white p-6 text-center relative">
-    <button onclick="showSection('home')" class="absolute left-3 top-4 text-sm">← 이전</button>
-    <h2 id="form-title" class="text-2xl font-bold">교복 소장 신청</h2>
-    <p class="text-sm mt-2 opacity-90">필요한 품목과 방문 일정을 선택해 주세요.</p>
-  </div>
-  <form id="uniform-form" onsubmit="handleFormSubmit(event)" class="p-6 space-y-7">
-    <input type="hidden" id="service-type" value="buy">
-
-    <div>
-      <h3 class="font-bold border-b pb-2 mb-4">1. 방문 일정</h3>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <label class="text-sm font-semibold">방문 날짜 *
-          <input id="pickup-date" type="date" required onchange="validateDate('pickup-date','pickup-time')" class="block w-full mt-1 border rounded-xl p-3">
-          <span class="text-xs text-slate-500">화요일·목요일만 가능</span>
-        </label>
-        <label class="text-sm font-semibold">방문 시간 *
-          <select id="pickup-time" required class="block w-full mt-1 border rounded-xl p-3">
-            <option value="">날짜를 먼저 선택해 주세요</option>
-          </select>
-        </label>
-      </div>
-    </div>
-
-    <div>
-      <h3 class="font-bold border-b pb-2 mb-4">2. 신청인 정보</h3>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <label class="text-sm font-semibold">학생 성명 *
-          <input id="user-name" required class="block w-full mt-1 border rounded-xl p-3" placeholder="홍길동">
-        </label>
-        <label class="text-sm font-semibold">학년 및 학반 *
-          <input id="user-class" required class="block w-full mt-1 border rounded-xl p-3" placeholder="예: 2학년 3반">
-        </label>
-        <label class="text-sm font-semibold sm:col-span-2">연락처 *
-          <input id="user-phone" type="tel" required class="block w-full mt-1 border rounded-xl p-3" placeholder="010-1234-5678">
-        </label>
-      </div>
-    </div>
-
-    <div>
-      <h3 class="font-bold border-b pb-2 mb-4">3. 교복 품목 및 사이즈</h3>
-      <div id="uniform-items" class="space-y-3"></div>
-    </div>
-
-    <label class="flex gap-2 text-xs text-slate-600 leading-relaxed">
-      <input type="checkbox" required class="mt-1">
-      지정된 날짜와 시간에 교복 은행을 방문하겠습니다. 대여 기간은 최대 일주일입니다.
-    </label>
-    <button type="submit" id="submit-btn-text" class="w-full bg-emerald-600 text-white font-bold p-4 rounded-xl hover:bg-emerald-700">소장 신청서 제출</button>
-  </form>
+<!-- 소장 및 대여 신청 -->
+<section id="form-section" class="hidden max-w-3xl mx-auto bg-white rounded-2xl border overflow-hidden">
+<div id="form-header" class="bg-emerald-600 text-white p-6 text-center relative">
+<button onclick="showSection('home')" class="absolute left-3 top-4 text-sm">← 이전</button>
+<h2 id="form-title" class="text-2xl font-bold">교복 소장 신청</h2>
+<p class="text-sm mt-2">방문 일정과 필요한 교복을 선택해 주세요.</p>
+</div>
+<form id="uniform-form" onsubmit="handleFormSubmit(event)" class="p-6 space-y-7">
+<input id="service-type" type="hidden" value="buy">
+<div>
+<h3 class="font-bold border-b pb-2 mb-4">1. 방문 일정</h3>
+<div class="grid sm:grid-cols-2 gap-4">
+<label class="text-sm font-semibold">방문 날짜 *
+<input id="pickup-date" type="date" required onchange="validateDate('pickup-date','pickup-time')" class="block w-full mt-1 border rounded-xl p-3">
+<span class="text-xs text-slate-500">화요일·목요일만 가능</span>
+</label>
+<label class="text-sm font-semibold">방문 시간 *
+<select id="pickup-time" required class="block w-full mt-1 border rounded-xl p-3"><option value="">날짜를 먼저 선택하세요</option></select>
+</label>
+</div>
+</div>
+<div>
+<h3 class="font-bold border-b pb-2 mb-4">2. 신청인 정보</h3>
+<div class="grid sm:grid-cols-2 gap-4">
+<label class="text-sm font-semibold">학생 성명 *
+<input id="user-name" required class="block w-full mt-1 border rounded-xl p-3" placeholder="홍길동">
+</label>
+<label class="text-sm font-semibold">학년 및 학반 *
+<input id="user-class" required class="block w-full mt-1 border rounded-xl p-3" placeholder="예: 2학년 3반">
+</label>
+<label class="text-sm font-semibold sm:col-span-2">연락처 *
+<input id="user-phone" type="tel" required class="block w-full mt-1 border rounded-xl p-3" placeholder="010-1234-5678">
+</label>
+</div>
+</div>
+<div>
+<h3 class="font-bold border-b pb-2 mb-4">3. 교복 품목 및 수량</h3>
+<div id="uniform-items" class="space-y-3"></div>
+</div>
+<label class="flex gap-2 text-xs text-slate-600">
+<input type="checkbox" required class="mt-1">
+지정된 일정에 방문하겠습니다. 대여 기간은 최대 일주일입니다.
+</label>
+<button id="submit-btn-text" type="submit" class="w-full bg-emerald-600 text-white font-bold p-4 rounded-xl">소장 신청서 제출</button>
+</form>
 </section>
 
-<!-- 기부 신청 화면 -->
-<section id="donation-section" class="hidden max-w-3xl mx-auto bg-white rounded-2xl shadow border overflow-hidden">
-  <div class="bg-pink-600 text-white p-6 text-center relative">
-    <button onclick="showSection('home')" class="absolute left-3 top-4 text-sm">← 이전</button>
-    <h2 class="text-2xl font-bold">사랑의 교복 기부 신청</h2>
-    <p class="text-sm mt-2 text-pink-100">여러 품목과 여러 벌을 한 번에 기부할 수 있어요.</p>
-  </div>
-  <form id="donation-form" onsubmit="handleDonationSubmit(event)" class="p-6 space-y-7">
-    <div>
-      <h3 class="font-bold border-b pb-2 mb-4">1. 방문 일정</h3>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <label class="text-sm font-semibold">방문 날짜 *
-          <input id="donate-date" type="date" required onchange="validateDate('donate-date','donate-time')" class="block w-full mt-1 border rounded-xl p-3">
-          <span class="text-xs text-slate-500">화요일·목요일만 가능</span>
-        </label>
-        <label class="text-sm font-semibold">방문 시간 *
-          <select id="donate-time" required class="block w-full mt-1 border rounded-xl p-3">
-            <option value="">날짜를 먼저 선택해 주세요</option>
-          </select>
-        </label>
-      </div>
-    </div>
-
-    <div>
-      <h3 class="font-bold border-b pb-2 mb-4">2. 기부자 정보</h3>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <label class="text-sm font-semibold">학생 성명 *
-          <input id="donor-name" required class="block w-full mt-1 border rounded-xl p-3" placeholder="홍길동">
-        </label>
-        <label class="text-sm font-semibold">학년 및 학반 *
-          <input id="donor-class" required class="block w-full mt-1 border rounded-xl p-3" placeholder="예: 3학년 2반 / 졸업생">
-        </label>
-        <label class="text-sm font-semibold sm:col-span-2">연락처 *
-          <input id="donor-phone" type="tel" required class="block w-full mt-1 border rounded-xl p-3" placeholder="010-1234-5678">
-        </label>
-      </div>
-    </div>
-
-    <div>
-      <h3 class="font-bold border-b pb-2 mb-2">3. 기부 품목, 수량 및 상태</h3>
-      <p class="text-sm text-slate-500 mb-4">기부할 품목을 선택하고 각각 수량, 사이즈, 상태를 입력하세요.</p>
-      <div id="donation-items" class="space-y-3"></div>
-      <div class="mt-4 rounded-xl bg-pink-50 border border-pink-100 p-4">
-        <p class="font-bold text-pink-800 text-sm"><i class="fa-solid fa-heart mr-1"></i>기부 품목 합계</p>
-        <p id="donation-total" class="text-pink-700 mt-1 font-bold">선택한 교복 0벌</p>
-      </div>
-    </div>
-
-    <label class="flex gap-2 text-xs text-slate-600 leading-relaxed">
-      <input type="checkbox" required class="mt-1">
-      기부할 교복의 상태를 정확하게 입력했으며, 지정된 일정에 방문하겠습니다.
-    </label>
-    <button type="submit" class="w-full bg-pink-600 text-white font-bold p-4 rounded-xl hover:bg-pink-700">기부 신청서 등록하기</button>
-  </form>
+<!-- 기부 신청 -->
+<section id="donation-section" class="hidden max-w-3xl mx-auto bg-white rounded-2xl border overflow-hidden">
+<div class="bg-pink-600 text-white p-6 text-center relative">
+<button onclick="showSection('home')" class="absolute left-3 top-4 text-sm">← 이전</button>
+<h2 class="text-2xl font-bold">사랑의 교복 기부 신청</h2>
+<p class="text-sm mt-2">여러 품목을 한 번에 기부할 수 있어요.</p>
+</div>
+<form id="donation-form" onsubmit="handleDonationSubmit(event)" class="p-6 space-y-7">
+<div>
+<h3 class="font-bold border-b pb-2 mb-4">1. 방문 일정</h3>
+<div class="grid sm:grid-cols-2 gap-4">
+<label class="text-sm font-semibold">방문 날짜 *
+<input id="donate-date" type="date" required onchange="validateDate('donate-date','donate-time')" class="block w-full mt-1 border rounded-xl p-3">
+<span class="text-xs text-slate-500">화요일·목요일만 가능</span>
+</label>
+<label class="text-sm font-semibold">방문 시간 *
+<select id="donate-time" required class="block w-full mt-1 border rounded-xl p-3"><option value="">날짜를 먼저 선택하세요</option></select>
+</label>
+</div>
+</div>
+<div>
+<h3 class="font-bold border-b pb-2 mb-4">2. 기부자 정보</h3>
+<div class="grid sm:grid-cols-2 gap-4">
+<label class="text-sm font-semibold">학생 성명 *
+<input id="donor-name" required class="block w-full mt-1 border rounded-xl p-3" placeholder="홍길동">
+</label>
+<label class="text-sm font-semibold">학년 및 학반 *
+<input id="donor-class" required class="block w-full mt-1 border rounded-xl p-3" placeholder="예: 졸업생">
+</label>
+<label class="text-sm font-semibold sm:col-span-2">연락처 *
+<input id="donor-phone" type="tel" required class="block w-full mt-1 border rounded-xl p-3" placeholder="010-1234-5678">
+</label>
+</div>
+</div>
+<div>
+<h3 class="font-bold border-b pb-2 mb-2">3. 기부 품목, 수량 및 상태</h3>
+<p class="text-sm text-slate-500 mb-4">품목별 수량과 교복 상태를 선택해 주세요.</p>
+<div id="donation-items" class="space-y-3"></div>
+<div class="mt-4 bg-pink-50 border border-pink-100 rounded-xl p-4">
+<p class="font-bold text-pink-800">기부 수량 합계</p>
+<p id="donation-total" class="text-pink-700 mt-1 font-bold">선택한 교복 0벌</p>
+</div>
+</div>
+<label class="flex gap-2 text-xs text-slate-600">
+<input type="checkbox" required class="mt-1">
+기부할 교복 상태를 정확하게 입력했습니다.
+</label>
+<button type="submit" class="w-full bg-pink-600 text-white font-bold p-4 rounded-xl">기부 신청서 등록하기</button>
+</form>
 </section>
 </main>
 
-<footer class="bg-slate-800 text-slate-300 py-8 mt-12">
-  <div class="max-w-6xl mx-auto px-4 text-center">
-    <p class="font-bold">Green 스마트 교복 은행</p>
-    <p class="text-xs mt-2 text-slate-400">교복 재사용으로 나눔과 자원 순환을 실천합니다.</p>
-  </div>
+<footer class="bg-slate-800 text-slate-300 py-8 mt-12 text-center">
+<p class="font-bold">Green 스마트 교복 은행</p>
+<p class="text-xs mt-2">교복 재사용으로 나눔과 자원 순환을 실천합니다.</p>
 </footer>
 
-<!-- 확인서 모달 -->
-<div id="receipt-modal" class="hidden fixed inset-0 bg-slate-900/60 z-50 p-4 items-center justify-center">
-  <div class="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-    <div id="receipt-header" class="bg-emerald-600 text-white p-6 text-center rounded-t-2xl">
-      <h3 class="text-xl font-bold">신청이 완료되었습니다!</h3>
-      <p class="text-xs mt-1 opacity-90">방문 시 확인서를 보여주세요.</p>
-    </div>
-    <div class="p-6 space-y-4 text-sm">
-      <div class="flex justify-between gap-3 border-b pb-3"><span class="text-slate-500">구분</span><strong id="receipt-type"></strong></div>
-      <div class="flex justify-between gap-3"><span class="text-slate-500">예약 번호</span><strong id="receipt-id" class="text-emerald-600"></strong></div>
-      <div class="flex justify-between gap-3"><span class="text-slate-500">신청인</span><strong id="receipt-name" class="text-right"></strong></div>
-      <div class="flex justify-between gap-3"><span class="text-slate-500">연락처</span><strong id="receipt-phone" class="text-right"></strong></div>
-      <div class="flex justify-between gap-3"><span class="text-slate-500">방문 날짜</span><strong id="receipt-date" class="text-right"></strong></div>
-      <div class="flex justify-between gap-3"><span class="text-slate-500">방문 시간</span><strong id="receipt-time" class="text-right"></strong></div>
-      <div class="border-t pt-3">
-        <p id="receipt-items-label" class="text-xs text-slate-500 mb-2">신청 품목</p>
-        <div id="receipt-items" class="bg-slate-50 rounded-xl p-3 space-y-3"></div>
-      </div>
-      <p class="text-xs text-slate-500">※ 이 확인서는 현재 브라우저에서 표시됩니다. 실제 신청 정보 전송 및 저장 기능은 별도 연동이 필요합니다.</p>
-    </div>
-    <div class="p-4 bg-slate-50 rounded-b-2xl">
-      <button onclick="closeModal()" class="w-full bg-slate-800 text-white font-bold rounded-xl py-3">확인</button>
-    </div>
-  </div>
+<!-- 신청 확인서 -->
+<div id="receipt-modal" class="hidden fixed inset-0 bg-black/60 z-50 p-4 items-center justify-center">
+<div class="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+<div id="receipt-header" class="bg-emerald-600 text-white p-6 text-center rounded-t-2xl">
+<h3 class="text-xl font-bold">신청이 완료되었습니다!</h3>
+<p class="text-xs mt-1">방문 시 신청 내용을 보여주세요.</p>
+</div>
+<div class="p-6 space-y-4 text-sm">
+<div class="flex justify-between gap-3"><span>구분</span><strong id="receipt-type"></strong></div>
+<div class="flex justify-between gap-3"><span>예약 번호</span><strong id="receipt-id" class="text-emerald-600"></strong></div>
+<div class="flex justify-between gap-3"><span>신청인</span><strong id="receipt-name"></strong></div>
+<div class="flex justify-between gap-3"><span>연락처</span><strong id="receipt-phone"></strong></div>
+<div class="flex justify-between gap-3"><span>방문 날짜</span><strong id="receipt-date"></strong></div>
+<div class="flex justify-between gap-3"><span>방문 시간</span><strong id="receipt-time"></strong></div>
+<div class="border-t pt-3">
+<p id="receipt-items-label" class="text-xs text-slate-500 mb-2">신청 품목</p>
+<div id="receipt-items" class="bg-slate-50 rounded-xl p-3 space-y-3"></div>
+</div>
+<p class="text-xs text-slate-500">시제품 확인서입니다. 실제 신청 정보가 학교로 전송되는 것은 아닙니다.</p>
+</div>
+<div class="p-4 bg-slate-50 rounded-b-2xl">
+<button onclick="closeModal()" class="w-full bg-slate-800 text-white font-bold rounded-xl py-3">확인</button>
+</div>
+</div>
 </div>
 
-<!-- 안내 모달 -->
 <div id="alert-modal" class="hidden fixed inset-0 bg-black/50 z-[60] p-4 items-center justify-center">
-  <div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center shadow-xl">
-    <i class="fa-solid fa-circle-exclamation text-amber-500 text-3xl"></i>
-    <p id="alert-message" class="text-sm mt-4 whitespace-pre-line"></p>
-    <button onclick="closeAlert()" class="w-full mt-5 py-3 bg-slate-800 text-white font-bold rounded-xl">확인</button>
-  </div>
+<div class="bg-white rounded-2xl p-6 max-w-sm w-full text-center">
+<i class="fa-solid fa-circle-exclamation text-amber-500 text-3xl"></i>
+<p id="alert-message" class="text-sm mt-4 whitespace-pre-line"></p>
+<button onclick="closeAlert()" class="w-full mt-5 py-3 bg-slate-800 text-white font-bold rounded-xl">확인</button>
+</div>
 </div>
 
 <script>
 const catalog = [
-  {
-    id: 'jacket', label: '학교 공식 자켓 (마이)',
-    genders: ['공용', '남성용', '여성용'],
-    sizes: ['85', '90', '95', '100', '105']
-  },
-  {
-    id: 'shirt', label: '와이셔츠 / 블라우스',
-    genders: ['남성용', '여성용'],
-    sizes: ['85', '90', '95', '100', '105']
-  },
-  {
-    id: 'pants', label: '동복 바지 / 스커트',
-    genders: ['바지', '치마'],
-    sizes: ['허리 65', '허리 71', '허리 77', '허리 83', '허리 89']
-  },
-  {
-    id: 'vest', label: '니트 조끼',
-    genders: ['공용', '남성용', '여성용'],
-    sizes: ['85', '90', '95', '100', '105']
-  }
+{id:'jacket',label:'학교 공식 자켓 (마이)',genders:['공용','남성용','여성용'],sizes:['85','90','95','100','105'],stock:12},
+{id:'shirt',label:'와이셔츠 / 블라우스',genders:['남성용','여성용'],sizes:['85','90','95','100','105'],stock:25},
+{id:'pants',label:'동복 바지 / 스커트',genders:['바지','치마'],sizes:['허리 65','허리 71','허리 77','허리 83','허리 89'],stock:18},
+{id:'vest',label:'니트 조끼',genders:['공용','남성용','여성용'],sizes:['85','90','95','100','105'],stock:14}
 ];
 
-const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+function readInventory(){
+  const initial={};
+  catalog.forEach(item=>initial[item.id]=item.stock);
+  try{
+    const saved=JSON.parse(localStorage.getItem('greenUniformInventory'));
+    if(saved && typeof saved==='object'){
+      catalog.forEach(item=>{
+        if(Number.isInteger(saved[item.id]) && saved[item.id]>=0)
+          initial[item.id]=saved[item.id];
+      });
+    }
+  }catch(e){}
+  return initial;
+}
+let inventory=readInventory();
 
-function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
-  }[char]));
+function saveInventory(){
+  try{
+    localStorage.setItem('greenUniformInventory',JSON.stringify(inventory));
+  }catch(e){
+    customAlert('브라우저에서 재고를 저장할 수 없습니다.');
+  }
 }
 
-function buildOptions(items) {
-  return items.map((item, index) =>
-    `<option value="${escapeHtml(item)}" ${index === 0 ? 'selected' : ''}>${escapeHtml(item)}</option>`
-  ).join('');
+function options(items){
+  return items.map(x=>`<option value="${x}">${x}</option>`).join('');
 }
 
-function buildCards() {
-  const uniformRoot = document.getElementById('uniform-items');
-  const donationRoot = document.getElementById('donation-items');
-
-  uniformRoot.innerHTML = catalog.map(item => `
+function buildCards(){
+  document.getElementById('uniform-items').innerHTML=catalog.map(item=>`
     <div class="p-4 border rounded-xl">
-      <label class="flex items-center gap-3 font-bold cursor-pointer">
+      <label class="flex gap-3 items-center font-bold">
         <input type="checkbox" id="item-${item.id}" class="w-5 h-5 accent-emerald-600">
         ${item.label}
       </label>
-      <div id="options-${item.id}" class="hidden grid sm:grid-cols-2 gap-3 mt-3">
+      <p class="text-xs mt-2 text-slate-500">현재 재고: <strong id="form-stock-${item.id}">${inventory[item.id]}벌</strong></p>
+      <div id="options-${item.id}" class="hidden grid sm:grid-cols-3 gap-3 mt-3">
         <label class="text-xs text-slate-500">종류
-          <select id="gender-${item.id}" class="w-full border rounded-lg p-2 mt-1 text-sm">${buildOptions(item.genders)}</select>
+          <select id="gender-${item.id}" class="w-full border rounded-lg p-2 mt-1">${options(item.genders)}</select>
         </label>
         <label class="text-xs text-slate-500">사이즈
-          <select id="size-${item.id}" class="w-full border rounded-lg p-2 mt-1 text-sm">${buildOptions(item.sizes)}</select>
+          <select id="size-${item.id}" class="w-full border rounded-lg p-2 mt-1">${options(item.sizes)}</select>
+        </label>
+        <label class="text-xs text-slate-500">수량
+          <select id="quantity-${item.id}" class="w-full border rounded-lg p-2 mt-1">
+            ${Array.from({length:10},(_,i)=>`<option value="${i+1}">${i+1}벌</option>`).join('')}
+          </select>
         </label>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 
-  donationRoot.innerHTML = catalog.map(item => `
+  document.getElementById('donation-items').innerHTML=catalog.map(item=>`
     <div class="p-4 border rounded-xl">
-      <label class="flex items-center gap-3 font-bold cursor-pointer">
+      <label class="flex gap-3 items-center font-bold">
         <input type="checkbox" id="donate-item-${item.id}" class="w-5 h-5 accent-pink-600">
         ${item.label}
       </label>
       <div id="donate-options-${item.id}" class="hidden grid sm:grid-cols-2 gap-3 mt-3">
         <label class="text-xs text-slate-500">종류
-          <select id="donate-gender-${item.id}" class="w-full border rounded-lg p-2 mt-1 text-sm">${buildOptions(item.genders)}</select>
+          <select id="donate-gender-${item.id}" class="w-full border rounded-lg p-2 mt-1">${options(item.genders)}</select>
         </label>
         <label class="text-xs text-slate-500">사이즈
-          <select id="donate-size-${item.id}" class="w-full border rounded-lg p-2 mt-1 text-sm">${buildOptions(item.sizes)}</select>
+          <select id="donate-size-${item.id}" class="w-full border rounded-lg p-2 mt-1">${options(item.sizes)}</select>
         </label>
         <label class="text-xs text-slate-500">기부 수량
-          <select id="donate-quantity-${item.id}" class="w-full border rounded-lg p-2 mt-1 text-sm">
-            ${Array.from({length:10}, (_, i) => `<option value="${i+1}" ${i === 1 ? 'selected' : ''}>${i+1}벌</option>`).join('')}
+          <select id="donate-quantity-${item.id}" class="w-full border rounded-lg p-2 mt-1">
+            ${Array.from({length:10},(_,i)=>`<option value="${i+1}" ${i===1?'selected':''}>${i+1}벌</option>`).join('')}
           </select>
         </label>
         <label class="text-xs text-slate-500">교복 상태
-          <select id="donate-condition-${item.id}" class="w-full border rounded-lg p-2 mt-1 text-sm">
-            <option value="새것에 가까움">새것에 가까움</option>
-            <option value="양호함" selected>양호함</option>
-            <option value="보통">보통</option>
-            <option value="수선 필요">수선 필요</option>
+          <select id="donate-condition-${item.id}" class="w-full border rounded-lg p-2 mt-1">
+            <option>새것에 가까움</option>
+            <option selected>양호함</option>
+            <option>보통</option>
+            <option>수선 필요</option>
           </select>
         </label>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 
-  catalog.forEach(item => {
-    document.getElementById(`item-${item.id}`).addEventListener('change', event => {
-      document.getElementById(`options-${item.id}`).classList.toggle('hidden', !event.target.checked);
+  catalog.forEach(item=>{
+    document.getElementById(`item-${item.id}`).addEventListener('change',e=>{
+      document.getElementById(`options-${item.id}`).classList.toggle('hidden',!e.target.checked);
     });
-    document.getElementById(`donate-item-${item.id}`).addEventListener('change', event => {
-      document.getElementById(`donate-options-${item.id}`).classList.toggle('hidden', !event.target.checked);
+    document.getElementById(`donate-item-${item.id}`).addEventListener('change',e=>{
+      document.getElementById(`donate-options-${item.id}`).classList.toggle('hidden',!e.target.checked);
       updateDonationTotal();
     });
-    document.getElementById(`donate-quantity-${item.id}`).addEventListener('change', updateDonationTotal);
+    document.getElementById(`donate-quantity-${item.id}`).addEventListener('change',updateDonationTotal);
   });
 }
 
-function showSection(name) {
-  ['home-section', 'form-section', 'donation-section'].forEach(id =>
-    document.getElementById(id).classList.add('hidden')
-  );
-  const target = {home:'home-section', form:'form-section', donate:'donation-section'}[name];
-  document.getElementById(target).classList.remove('hidden');
-  window.scrollTo({top:0, behavior:'smooth'});
+function showSection(name){
+  ['home-section','form-section','donation-section'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  document.getElementById(({home:'home-section',form:'form-section',donate:'donation-section'})[name]).classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function resetForm(formId) {
-  document.getElementById(formId).reset();
-  if (formId === 'uniform-form') {
-    catalog.forEach(item => document.getElementById(`options-${item.id}`).classList.add('hidden'));
-    document.getElementById('pickup-time').innerHTML = '<option value="">날짜를 먼저 선택해 주세요</option>';
-  } else {
-    catalog.forEach(item => document.getElementById(`donate-options-${item.id}`).classList.add('hidden'));
-    document.getElementById('donate-time').innerHTML = '<option value="">날짜를 먼저 선택해 주세요</option>';
-    updateDonationTotal();
-  }
-}
-
-function startService(type) {
-  if (type === 'donate') {
-    resetForm('donation-form');
+function startService(type){
+  if(type==='donate'){
+    document.getElementById('donation-form').reset();
+    catalog.forEach(item=>document.getElementById(`donate-options-${item.id}`).classList.add('hidden'));
+    document.getElementById('donate-time').innerHTML='<option value="">날짜를 먼저 선택하세요</option>';
     setupMinDate('donate-date');
+    updateDonationTotal();
     showSection('donate');
     return;
   }
 
-  resetForm('uniform-form');
-  document.getElementById('service-type').value = type;
-  const rent = type === 'rent';
-  document.getElementById('form-title').textContent = rent ? '교복 대여 신청 (최대 일주일)' : '교복 소장 신청';
-  document.getElementById('form-header').className = `${rent ? 'bg-blue-600' : 'bg-emerald-600'} text-white p-6 text-center relative`;
-  document.getElementById('submit-btn-text').textContent = rent ? '대여 신청하기' : '소장 신청서 제출';
-  document.getElementById('submit-btn-text').className = `w-full text-white font-bold p-4 rounded-xl ${rent ? 'bg-blue-600 hover:bg-blue-700' : 'bg-emerald-600 hover:bg-emerald-700'}`;
+  document.getElementById('uniform-form').reset();
+  catalog.forEach(item=>document.getElementById(`options-${item.id}`).classList.add('hidden'));
+  document.getElementById('pickup-time').innerHTML='<option value="">날짜를 먼저 선택하세요</option>';
+  document.getElementById('service-type').value=type;
+  const rent=type==='rent';
+  document.getElementById('form-title').textContent=rent?'교복 대여 신청 (최대 일주일)':'교복 소장 신청';
+  document.getElementById('form-header').className=`${rent?'bg-blue-600':'bg-emerald-600'} text-white p-6 text-center relative`;
+  document.getElementById('submit-btn-text').textContent=rent?'대여 신청하기':'소장 신청서 제출';
+  document.getElementById('submit-btn-text').className=`w-full text-white font-bold p-4 rounded-xl ${rent?'bg-blue-600':'bg-emerald-600'}`;
   setupMinDate('pickup-date');
+  updateStockDisplay();
   showSection('form');
 }
 
-function setupMinDate(id) {
-  const date = new Date();
-  date.setDate(date.getDate() + 1);
-  document.getElementById(id).min =
-    `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+function setupMinDate(id){
+  const d=new Date();
+  d.setDate(d.getDate()+1);
+  document.getElementById(id).min=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-function validateDate(dateId, timeId) {
-  const input = document.getElementById(dateId);
-  const time = document.getElementById(timeId);
-  if (!input.value) {
-    time.innerHTML = '<option value="">날짜를 먼저 선택해 주세요</option>';
+function validateDate(dateId,timeId){
+  const input=document.getElementById(dateId);
+  const time=document.getElementById(timeId);
+  if(!input.value){time.innerHTML='<option value="">날짜를 먼저 선택하세요</option>';return;}
+  const [y,m,d]=input.value.split('-').map(Number);
+  const day=new Date(y,m-1,d).getDay();
+  if(day!==2 && day!==4){
+    customAlert('방문 예약은 화요일 또는 목요일만 가능합니다.');
+    input.value='';
+    time.innerHTML='<option value="">날짜를 먼저 선택하세요</option>';
     return;
   }
-
-  const [year, month, day] = input.value.split('-').map(Number);
-  const date = new Date(year, month - 1, day);
-  if (![2, 4].includes(date.getDay())) {
-    customAlert('방문 예약은 화요일 또는 목요일에만 가능합니다.\n다른 날짜를 선택해 주세요.');
-    input.value = '';
-    time.innerHTML = '<option value="">날짜를 먼저 선택해 주세요</option>';
-    return;
-  }
-
-  time.innerHTML = `
-    <option value="">시간 선택</option>
-    <option value="점심시간 (13:30~14:00)">점심시간 (13:30~14:00)</option>
-    <option value="하교시간 (17:00~17:30)">하교시간 (17:00~17:30)</option>`;
+  time.innerHTML='<option value="">시간 선택</option><option value="13:30~14:00">13:30~14:00</option><option value="17:00~17:30">17:00~17:30</option>';
 }
 
-function formatDate(value) {
-  const [year, month, day] = value.split('-').map(Number);
-  const date = new Date(year, month - 1, day);
-  return `${year}년 ${month}월 ${day}일 (${dayNames[date.getDay()]})`;
+function formatDate(value){
+  const [y,m,d]=value.split('-').map(Number);
+  const date=new Date(y,m-1,d);
+  return `${y}년 ${m}월 ${d}일 (${['일','월','화','수','목','금','토'][date.getDay()]})`;
 }
 
-function getCheckedUniforms() {
-  const selected = [];
-  catalog.forEach(item => {
-    if (document.getElementById(`item-${item.id}`).checked) {
-      selected.push({
-        name: item.label,
-        gender: document.getElementById(`gender-${item.id}`).value,
-        size: document.getElementById(`size-${item.id}`).value
+function getSelectedItems(){
+  const result=[];
+  catalog.forEach(item=>{
+    if(document.getElementById(`item-${item.id}`).checked){
+      result.push({
+        id:item.id,name:item.label,
+        gender:document.getElementById(`gender-${item.id}`).value,
+        size:document.getElementById(`size-${item.id}`).value,
+        quantity:Number(document.getElementById(`quantity-${item.id}`).value)
       });
     }
   });
-  return selected;
+  return result;
 }
 
-function handleFormSubmit(event) {
+function handleFormSubmit(event){
   event.preventDefault();
-  const items = getCheckedUniforms();
-  if (!items.length) {
-    customAlert('신청할 교복 품목을 하나 이상 선택해 주세요.');
-    return;
+  const items=getSelectedItems();
+  if(!items.length){customAlert('신청할 교복을 하나 이상 선택해 주세요.');return;}
+
+  for(const item of items){
+    if(item.quantity>inventory[item.id]){
+      customAlert(`${item.name} 재고가 부족합니다.\n현재 재고: ${inventory[item.id]}벌\n신청 수량: ${item.quantity}벌`);
+      return;
+    }
   }
 
-  const type = document.getElementById('service-type').value;
-  const name = document.getElementById('user-name').value.trim();
-  const classInfo = document.getElementById('user-class').value.trim();
+  // 모든 품목의 재고 확인 후 한 번에 차감
+  items.forEach(item=>inventory[item.id]-=item.quantity);
+  saveInventory();
+  updateStockDisplay();
+
+  const type=document.getElementById('service-type').value;
   renderReceipt({
-    type: type === 'rent' ? '단기 대여 (최대 일주일)' : '소장 신청',
-    id: 'UNIF-' + Math.floor(100000 + Math.random() * 900000),
-    name: `${name} (${classInfo})`,
-    phone: document.getElementById('user-phone').value.trim(),
-    date: formatDate(document.getElementById('pickup-date').value),
-    time: document.getElementById('pickup-time').value,
-    items,
-    isDonation: false
+    type:type==='rent'?'단기 대여 (최대 일주일)':'소장 신청',
+    id:'UNIF-'+Math.floor(100000+Math.random()*900000),
+    name:`${document.getElementById('user-name').value.trim()} (${document.getElementById('user-class').value.trim()})`,
+    phone:document.getElementById('user-phone').value.trim(),
+    date:formatDate(document.getElementById('pickup-date').value),
+    time:document.getElementById('pickup-time').value,
+    items,isDonation:false
   });
 }
 
-function getDonationItems() {
-  const selected = [];
-  catalog.forEach(item => {
-    if (document.getElementById(`donate-item-${item.id}`).checked) {
-      selected.push({
-        name: item.label,
-        gender: document.getElementById(`donate-gender-${item.id}`).value,
-        size: document.getElementById(`donate-size-${item.id}`).value,
-        quantity: Number(document.getElementById(`donate-quantity-${item.id}`).value),
-        condition: document.getElementById(`donate-condition-${item.id}`).value
+function getDonationItems(){
+  const result=[];
+  catalog.forEach(item=>{
+    if(document.getElementById(`donate-item-${item.id}`).checked){
+      result.push({
+        id:item.id,name:item.label,
+        gender:document.getElementById(`donate-gender-${item.id}`).value,
+        size:document.getElementById(`donate-size-${item.id}`).value,
+        quantity:Number(document.getElementById(`donate-quantity-${item.id}`).value),
+        condition:document.getElementById(`donate-condition-${item.id}`).value
       });
     }
   });
-  return selected;
+  return result;
 }
 
-function updateDonationTotal() {
-  const items = getDonationItems();
-  const total = items.reduce((sum, item) => sum + item.quantity, 0);
-  document.getElementById('donation-total').textContent = `선택한 교복 ${total}벌`;
+function updateDonationTotal(){
+  if(!document.getElementById('donation-total'))return;
+  const total=getDonationItems().reduce((sum,item)=>sum+item.quantity,0);
+  document.getElementById('donation-total').textContent=`선택한 교복 ${total}벌`;
 }
 
-function handleDonationSubmit(event) {
+function handleDonationSubmit(event){
   event.preventDefault();
-  const items = getDonationItems();
-  if (!items.length) {
-    customAlert('기부할 교복 품목을 하나 이상 선택해 주세요.');
-    return;
-  }
+  const items=getDonationItems();
+  if(!items.length){customAlert('기부할 교복을 하나 이상 선택해 주세요.');return;}
 
-  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
-  const name = document.getElementById('donor-name').value.trim();
-  const classInfo = document.getElementById('donor-class').value.trim();
+  // 기부는 실제로 교복을 인계받은 후 재고 반영해야 하므로
+  // 신청서 제출 시에는 재고를 즉시 늘리지 않음.
   renderReceipt({
-    type: '사랑의 교복 기부',
-    id: 'GIFT-' + Math.floor(100000 + Math.random() * 900000),
-    name: `${name} (${classInfo})`,
-    phone: document.getElementById('donor-phone').value.trim(),
-    date: formatDate(document.getElementById('donate-date').value),
-    time: document.getElementById('donate-time').value,
-    items,
-    totalQuantity,
-    isDonation: true
+    type:'사랑의 교복 기부 신청',
+    id:'GIFT-'+Math.floor(100000+Math.random()*900000),
+    name:`${document.getElementById('donor-name').value.trim()} (${document.getElementById('donor-class').value.trim()})`,
+    phone:document.getElementById('donor-phone').value.trim(),
+    date:formatDate(document.getElementById('donate-date').value),
+    time:document.getElementById('donate-time').value,
+    items,isDonation:true,
+    totalQuantity:items.reduce((sum,item)=>sum+item.quantity,0)
   });
 }
 
-function renderReceipt(data) {
-  const header = document.getElementById('receipt-header');
-  header.className = `text-white p-6 text-center rounded-t-2xl ${data.isDonation ? 'bg-pink-600' : data.type.startsWith('단기') ? 'bg-blue-600' : 'bg-emerald-600'}`;
-  document.getElementById('receipt-type').textContent = data.type;
-  document.getElementById('receipt-id').textContent = data.id;
-  document.getElementById('receipt-name').textContent = data.name;
-  document.getElementById('receipt-phone').textContent = data.phone;
-  document.getElementById('receipt-date').textContent = data.date;
-  document.getElementById('receipt-time').textContent = data.time;
-  document.getElementById('receipt-items-label').textContent =
-    data.isDonation ? `기부 품목 상세 · 총 ${data.totalQuantity}벌` : '신청 품목 상세';
+function renderReceipt(data){
+  const header=document.getElementById('receipt-header');
+  header.className=`text-white p-6 text-center rounded-t-2xl ${data.isDonation?'bg-pink-600':data.type.startsWith('단기')?'bg-blue-600':'bg-emerald-600'}`;
+  document.getElementById('receipt-type').textContent=data.type;
+  document.getElementById('receipt-id').textContent=data.id;
+  document.getElementById('receipt-name').textContent=data.name;
+  document.getElementById('receipt-phone').textContent=data.phone;
+  document.getElementById('receipt-date').textContent=data.date;
+  document.getElementById('receipt-time').textContent=data.time;
+  document.getElementById('receipt-items-label').textContent=data.isDonation?`기부 품목 · 총 ${data.totalQuantity}벌`:'신청 품목 상세';
 
-  const container = document.getElementById('receipt-items');
+  const container=document.getElementById('receipt-items');
   container.replaceChildren();
+  data.items.forEach(item=>{
+    const row=document.createElement('div');
+    row.className='border-b last:border-0 pb-2 space-y-1';
+    const title=document.createElement('p');
+    title.className='font-bold';
+    title.textContent=item.name;
+    const detail=document.createElement('p');
+    detail.className='text-slate-600';
+    detail.textContent=`${item.gender} · ${item.size} · ${item.quantity}벌`;
+    row.append(title,detail);
 
-  data.items.forEach(item => {
-    const row = document.createElement('div');
-    row.className = 'border-b border-slate-200 last:border-0 pb-2 last:pb-0 space-y-1';
-    const title = document.createElement('p');
-    title.className = 'font-bold text-slate-800';
-    title.textContent = item.name;
-    const detail = document.createElement('p');
-    detail.className = 'text-slate-600';
-    detail.textContent = `${item.gender} · ${item.size}${data.isDonation ? ` · ${item.quantity}벌` : ''}`;
-    row.append(title, detail);
-
-    if (data.isDonation) {
-      const condition = document.createElement('p');
-      condition.className = 'text-pink-600';
-      condition.textContent = `교복 상태: ${item.condition}`;
+    if(data.isDonation){
+      const condition=document.createElement('p');
+      condition.className='text-pink-600';
+      condition.textContent=`상태: ${item.condition}`;
       row.appendChild(condition);
     }
     container.appendChild(row);
   });
 
-  const modal = document.getElementById('receipt-modal');
+  const modal=document.getElementById('receipt-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
 
-function closeModal() {
-  const modal = document.getElementById('receipt-modal');
+function updateStockDisplay(){
+  const list=document.getElementById('stock-list');
+  list.innerHTML=catalog.map(item=>`
+    <div class="border rounded-xl p-4 flex justify-between items-center gap-3">
+      <span>${item.label}</span>
+      <strong class="${inventory[item.id]===0?'text-red-600':'text-emerald-700'}">${inventory[item.id]}벌</strong>
+    </div>`).join('');
+
+  catalog.forEach(item=>{
+    const el=document.getElementById(`form-stock-${item.id}`);
+    if(el)el.textContent=`${inventory[item.id]}벌`;
+  });
+
+  const editList=document.getElementById('stock-edit-list');
+  if(editList){
+    editList.innerHTML=catalog.map(item=>`
+      <label class="flex justify-between items-center gap-3 text-sm">
+        <span>${item.label}</span>
+        <input type="number" min="0" max="100000" id="edit-stock-${item.id}" value="${inventory[item.id]}" class="w-24 border rounded-lg p-2">
+      </label>`).join('');
+  }
+}
+
+function showStockAdmin(){
+  document.getElementById('stock-admin').classList.remove('hidden');
+  updateStockDisplay();
+}
+function hideStockAdmin(){
+  document.getElementById('stock-admin').classList.add('hidden');
+}
+function saveManualStock(){
+  const updated={};
+  for(const item of catalog){
+    const value=Number(document.getElementById(`edit-stock-${item.id}`).value);
+    if(!Number.isInteger(value)||value<0||value>100000){
+      customAlert('재고는 0 이상의 정수로 입력해 주세요.');
+      return;
+    }
+    updated[item.id]=value;
+  }
+  inventory=updated;
+  saveInventory();
+  updateStockDisplay();
+  customAlert('재고가 저장되었습니다.');
+}
+
+function closeModal(){
+  const modal=document.getElementById('receipt-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
   showSection('home');
 }
-
-function customAlert(message) {
-  document.getElementById('alert-message').textContent = message;
-  const modal = document.getElementById('alert-modal');
+function customAlert(message){
+  document.getElementById('alert-message').textContent=message;
+  const modal=document.getElementById('alert-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
 }
-function closeAlert() {
-  const modal = document.getElementById('alert-modal');
+function closeAlert(){
+  const modal=document.getElementById('alert-modal');
   modal.classList.add('hidden');
   modal.classList.remove('flex');
 }
 
 buildCards();
+updateStockDisplay();
 </script>
 </body>
 </html>
